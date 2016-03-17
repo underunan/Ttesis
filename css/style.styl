@@ -1,0 +1,234 @@
+body
+  background: #e8e8e8
+  color: #565a5c
+  font-family: Arial
+  font-size: 16px
+
+body .cabecera
+  font-weight: bold
+  position: absolute
+  width: 100%
+  z-index: 1000
+
+body .cabecera .cabecera-nav
+  border-radius: 0
+
+body .cabecera .cabecera-nav #modalCatalogo .modal-body ul li:hover
+  background-color: #01a0d7
+
+body .cabecera .cabecera-nav #modalCatalogo .modal-body ul li:hover a
+  background-color: transparent
+
+body .cabecera .cabecera-nav #modalCatalogo .modal-body ul li:hover a:hover
+  color: #fff
+
+body .cabecera .cabecera-nav #modalCatalogo .modal-body ul span
+  font-size: 1.5em
+
+body .cabecera .cabecera-nav #modalCatalogo .modal-title
+  color: #337ab7
+  font-weight: bold
+
+body .cabecera .cabecera-nav .navbar-default .navbar-collapse
+  margin-top: .4em
+
+body .cabecera .cabecera-nav .topHead
+  background-color: transparent
+  border: 0
+
+body .cabecera .cabecera-nav .topHead .navbar-brand
+  padding: 0
+
+body .cabecera .cabecera-nav .topHead a img
+  height: 60px
+  width: 60px
+
+body .cabecera .cabecera-nav .topHead #btnMenu
+  background-color: #01a0d7
+  border-radius: 0
+  font-size: 1.3em
+
+body .cabecera .cabecera-nav .topHead ul li:hover
+  background-color: #01a0d7
+
+body .cabecera .cabecera-nav .topHead ul li a
+  background-color: transparent
+  color: #fff !important
+  font-size: .8em
+
+body .cabecera .cabecera-nav .topHead ul li a span
+  font-size: 1.4em
+
+body .cabecera .cabecera-nav .topHead ul li .dropdown-toggle:hover
+  background-color: #01a0d7
+  color: #fff
+
+body .cabecera .cabecera-nav .topHead ul li .dropdown-toggle:focus
+  background-color: #e65a4b
+  color: #fff
+
+body .cabecera .cabecera-nav .topHead ul li .dropdown-menu
+  background-color: #e65a4b
+  font-size: 1em
+
+body h1
+  background-colorfont-family: "icomoon"
+  font-size: 2em
+  font-weight: bold
+  text-align: center
+
+body .video_form
+  padding: 0
+  position: relative
+
+body .video_form .formulario
+  bottom: 0
+  position: absolute
+  text-align: center
+
+body .video_form .formulario div
+  float: left
+  display: inline-block
+  margin: 0
+
+body .video_form .formulario div input
+  font-size: 1em
+  padding: 0 1.2em 0 1.2em
+  text-align: center
+  margin: 0
+
+body .video_form .formulario div button
+  border-radius: 0
+  box-shadow: 0 5px 5px rgba(0,0,0,0.5)
+
+body .informacion article
+  background: #fff
+  border-radius: 0 0 5px 5px
+  border-left: 1px solid #ccc
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.5)
+  margin-top: .5em
+  text-align: center
+
+body .informacion article .icon-brujula:before
+  content: "\e949"
+  color: #01a0d7
+  font-family: "icomoon-free"
+  font-size: 3.2em
+
+body .informacion article .icon-ubicacion:before
+  content: "\e948"
+  color: #01a0d7
+  font-family: "icomoon-free"
+  font-size: 3.2em
+
+body .informacion article .icon-computer:before
+  content: "\e957"
+  color: #01a0d7
+  font-family: "icomoon-free"
+  font-size: 3.2em
+
+body .informacion article h2
+  font-size: 1.8em
+  font-weight: bold
+
+body .informacion article div p
+  font-size: 1em
+
+body .resultados .bg-danger
+  background-color: #e65a4b
+
+body .resultados .bg-danger .btn
+  background-color: #c73b2c
+  border-radius: 0
+  margin-top: .8em
+
+body .resultados .bg-danger .lg
+  border-radius: 0
+
+body .resultados .bg-danger .item-descripcion .badge
+  background-color: #01a0d7
+
+body .resultados .bg-danger .item-descripcion .badge .icon
+  font-size: 1.5em
+
+body .resultados .bg-danger .item-descripcion .item-valor
+  color: #fff
+  font-size: 1.3em
+
+body .resultados .bg-danger .titulo
+  color: #fff
+
+body .resultados .label
+  border-radius: 0
+  padding: .5em
+
+body footer
+  background-color: #212121
+
+body footer ul
+  margin-top: 1em
+
+body footer ul li:not(:last-child):after
+  border-right: 1px solid #fff
+  content: ""
+  font-size: 10px
+  margin-left: 1.5em
+
+body footer ul li a
+  color: #fff
+  font-size: .8em
+  font-weight: bold
+
+body footer ul li a:hover
+  color: color_header
+  text-decoration: none
+
+body footer .iconos-sociales #icon_facebook:after
+  border-right: 0
+
+body footer .iconos-sociales #icon_facebook a:before
+  content: "\ea90  Facebook"
+  color: color_header
+  font-family: "icomoon-free"
+  font-size: 1.3em
+
+body footer .iconos-sociales #icon_twitter:after
+  border-right: 0
+
+body footer .iconos-sociales #icon_twitter a:before
+  content: "\ea96  Twitter"
+  color: color_header
+  font-family: "icomoon-free"
+  font-size: 1.3em
+
+@media screen and (max-width:768px)
+  .video_form .formulario
+    width: 100%
+
+  .video_form .formulario div
+    left: 0
+    width: 100%
+
+@media screen and (min-width:769px) and (max-width:970px)
+  .video_form .formulario
+    width: 100%
+
+  .video_form .formulario div
+    left: 15%
+
+  .tiendas .col-xs6
+    width: 33%
+
+  .tiendas .col-xs6 .items
+    font-size: 14px
+
+@media screen and (min-width:971px)
+  .video_form .formulario
+    width: 100%
+
+  .video_form .formulario div
+    left: 28%
+
+  .tiendas .col-xs6 .items
+    font-size: 14px
+

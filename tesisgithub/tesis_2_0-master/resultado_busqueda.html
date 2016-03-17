@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	<meta name="description" content=""/>
+	<title>Resultado de busqueda</title>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style_search.css">
+</head>
+<body>
+	<header class="row cabecera">
+		<div>
+			<figure>
+				<a href="#"><img src="img/logo.png" alt="Logo"></a>
+			</figure>
+		</div>
+		<div class="caja-menu">
+			<ul class="menu nav pull-right">
+				<li><a href="#">Únete</a></li>
+				<li><a href="#">Registrate</a></li>
+				<li><a href="#">Pública tu tienda</a></li>
+			</ul>
+		</div>
+	</header>
+	<section class="section-map">
+		<!--AQUÍ IRA EL MAPA-->
+		<div class="map">
+			
+		</div>
+
+		<div class="form-contenedor container well">
+			<div class="row">
+				<div class="col-sm-12">
+					<form action="" class="form-horizontal">
+						<div class="form-group">
+							<label for="form-group" class="col-sm-2 control-label">Lugar a buscar</label>
+							<div class="input-group col-xs-12 col-sm-6">
+								<span class="input-group-addon input-txt"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></span>
+								<input type="text" class="form-control input-md input-txt" placeholder="Lugar a buscar" name="lugar">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="form-group" class="col-sm-2 control-label">Articulo a buscar</label>
+							<div class="input-group col-sm-6 col-xs-12">
+								<span class="input-group-addon input-txt"><span class="glyphicon glyphicon-search"></span></span>
+								<input type="text" class="form-control input-md input-txt" placeholder="Producto a buscar" name="articulo">
+							</div>
+						</div>
+						<!--Filtro de busqueda-->
+						<div id="filtro" class="panel-collapse collapse">
+							<div class="form-group rango">
+								<label for="form-group" class="col-sm-2 control-label">Rango precio</label>
+								<div class="input-group col-sm-8 col-xs-12">
+									<input type="text" id="amount-1" readonly>
+									<input type="text" id="amount-2" readonly>
+									<div id="slider-range"></div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="form-group" class="col-sm-2 col-xs-12 control-label">Talla</label>
+								<div class="input-group col-sm-3">
+									<div class="btn-group talla-item" data-toggle="buttons">
+									<label class="btn btn-success"><input type="checkbox" autocomplete="off">16</label>
+									<label class="btn btn-success"><input type="checkbox" autocomplete="off">S</label>
+									<label class="btn btn-success"><input type="checkbox" autocomplete="off">M</label>
+									<label class="btn btn-success"><input type="checkbox" autocomplete="off">L</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--Fin de filtro de busqueda-->
+						<div class="form-group">
+							<button class="col-sm-3 col-sm-offset-4 col-xs-12 bnt btn-danger btn-lg btn-buscar" type="button">Buscar</button>
+						</div>
+						<div class="form-group">
+							<a class="col-sm-3 col-sm-offset-4 col-xs-12 btn btn-info btn-lg btn-filtro" data-parent="form" data-toggle="collapse" data-target="#filtro" aria-expanded="true" aria-controls="filtro">Más filtro</a>
+						</div>
+					</form>
+				</div>
+			</div>	
+		</div>
+	</section>
+	
+	<!--Resultados de busquedas-->
+	<section class="tiendas row">
+		<article class="col-xs6 col-xs-12 col-md-4"></article>
+	</section>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+<script type="text/javascript" src="js/map_script.js"></script>
+<script type="text/javascript" src="js/script_slider.js"></script>
+</body>
+</html>

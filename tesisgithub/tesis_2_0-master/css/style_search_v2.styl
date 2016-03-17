@@ -1,0 +1,253 @@
+color_texto = #565a5c
+color_icon = #01a0d7
+color_header = #22bce0
+color-pie = #212121
+color-enlace = #90CAF9
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon.eot?-af2g17');
+	src:url('../fonts/icomoon.eot?#iefix-af2g17') format('embedded-opentype'),
+		url('../fonts/icomoon.ttf?-af2g17') format('truetype'),
+		url('../fonts/icomoon.woff?-af2g17') format('woff'),
+		url('../fonts/icomoon.svg?-af2g17#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+body
+	background #E8E8E8
+	color color_texto
+	font-family Arial
+	font-size 16px
+	/*
+	.cabecera
+		background color_header
+		box-shadow 0 2px 5px rgba(0,0,0,0.26)
+		-webkit-box-shadow 0 2px 5px rgba(0,0,0,0.50)
+		font-size 1em
+		margin 0 0 0 0
+		position relative
+		z-index 1000
+		width 100%
+		&:after
+			border-bottom 30px solid transparent
+			border-top 30px solid transparent
+			border-right 35px solid #fff
+			content ""
+			position absolute
+			top 0.3em
+			right 0
+		div
+			figure
+				padding 0
+				width 70px
+				img
+					margin 0 2.5em
+					width 100%
+		.menu
+			display flex
+			display -webkit-flex
+			display -ms-webkit-flexbox
+			flex-wrap nowrap
+			-webkit-flex-wrap nowrap
+			-ms-flexbox-wrap nowrap
+			margin 0
+			padding 0
+			position absolute
+			right 3em
+			top 1.5em
+			li
+				list-style none
+				margin 0	
+				a:not(.btn)
+					color #fff
+					font-size 0.9em
+					font-weight bold
+					margin 0 0.5em
+					padding 0 0.2em
+					text-decoration none
+				a:not(.btn):hover
+						border-bottom 0.3em solid #f75d52
+					.btn
+						box-shadow 0 5px 0 rgba(#000,0.5)
+					.btn:hover
+						background #f75d52
+						border 1px solid #f75d52
+						box-shadow 0 5px 0 rgba(#000,0.5)
+	*/
+	
+	.cabecera
+		margin 0 0 0 0
+		padding 0
+		position relative
+		z-index 1000
+		width 100%
+		.cabecera-nav
+			border-radius 0px
+			.topHead
+				background-color #fff
+				height 55px
+				div
+					a
+						padding 0
+						img
+							height 60px
+							width 60px
+				ul
+					li:hover
+						background-color color-enlace
+						height 55px
+						a
+							color #fff
+					li
+						height 55px
+						border-left 2px solid color_cuerpo
+						a
+							background-color transparent
+							color color_texto
+							font-size 0.8em
+							margin-top 0.5em
+						.unete
+							background-color color-enlace
+							border-radius 0
+							height 290px
+							padding 2em
+							width 270px
+							h3
+								color #fff
+								font-weight bold
+								text-align left
+							._usuario
+							._pass
+								background-color #fff
+								border-radius 0
+								font-size 1em
+								padding 20px
+								text-align center
+							.btn-acceder
+								border-radius 0
+								
+					.moneda
+						ul
+							border-radius 0
+							padding 0
+							margin 0
+							width 160px
+							li
+								border 0
+								border-radius 0
+							li:last-child
+								border-top: 1px solid color_cuerpo
+							a
+								font-size 1em
+								margin 0
+								padding 1em
+								text-align left
+						li:hover
+							background-color #2196F3
+					.moneda:hover ul
+						background-color color-enlace
+						display block
+						margin 0
+					.login:hover .unete
+						display block
+						margin 0
+						button
+							color #fff
+							background-color #64B5F6
+							font-size 1em
+							font-weight normal
+							&:hover
+								background-color #42A5F5
+
+	section
+		margin 0
+		#map-canvas
+			height 100%
+		.aside
+			bottom 0
+			left auto
+			position fixed
+			right 0
+			top 50px
+			width 40%
+		.aside-bar
+			bottom 0
+			left 0
+			overflow-y scroll
+			position fixed
+			top 50px
+			width 60%
+			.search
+				border-radius 0
+				form
+					.btn-filtro
+						border-radius 0
+					.btn-buscar
+						border-radius 0
+						box-shadow 0 5px 5px rgba(0,0,0,0.5)
+					.input-txt
+						border-radius 0px
+						text-align center
+					#filtro
+						.rango
+							position relative
+							#slider-range
+								height 0.4em
+								margin-top 0.8em
+								.ui-widget-header
+									background #5BC0DE
+							input
+								background transparent
+								border none
+								color #D9534F
+								font-weight bold
+								position absolute
+								bottom 0.5em
+								width 3.5em
+							#amount-1
+								left -0.5em
+							#amount-2
+								right -2em
+					.line
+					&:before
+						border-bottom 1px solid #E0E0E0
+						content ""
+						padding-bottom 1em
+					.form-group
+						label
+							font-size 0.8em
+							text-align left
+						input
+							font-size 1em
+							font-weight normal	
+			.resultados
+				.item-descripcion
+					margin-bottom 0.8em
+					.item-valor
+						font-size 0.8em
+					.item-desc
+						color #f75d52
+						font-size 1em
+						font-style italic
+					.item-votacion
+						color #FFA000
+						text-decoration none
+						.item-num-vota
+							color color_texto
+							font-size 0.8em
+							font-weight bold
+							padding 0
+							
+@media screen and (min-width: 768px)
+		.btn-filtro
+			margin 0 25%
+		.btn-buscar
+			margin 0 25%
+		
+					
+							
+						
+			
