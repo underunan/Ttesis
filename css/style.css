@@ -134,9 +134,7 @@ body .informacion article h2 {
 body .informacion article div p {
   font-size: 1em;
 }
-body .resultados{
 
-}
 body .resultados .bg-danger {
   background-color: #e65a4b;
 }
@@ -193,6 +191,10 @@ body .resultados .label {
 
 .card img {
     width: 100%;
+}
+
+.card .item-fecha{
+  background-color: #01a0d7;
 }
 
 .usado{

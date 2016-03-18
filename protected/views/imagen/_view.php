@@ -18,15 +18,14 @@
 									        echo $moneda."".CHtml::encode($data->idproducto0->precio);
                                         ?>
 									</span>
-									<div class="badge pull-right">
+									<div class="badge pull-right item-fecha">
 										<span class="glyphicon glyphicon-time"></span>
 										<span>Publicado <?php echo CHtml::encode($data->idproducto0->fecha_publicacion); ?></span>
 									</div>
 
 								</div>
 								<p>
-
-		<?php echo CHtml::link('Ver más', array('view', 'id'=>$data->idimagen), array('class'=>'btn btn-danger btn-lg col-sm-12 col-xs-12' )); ?>
+									<?php echo CHtml::link('Ver más', array('view', 'id'=>$data->idimagen), array('class'=>'btn btn-danger btn-lg col-sm-12 col-xs-12' )); ?>
 								</p>
 </article>
 
