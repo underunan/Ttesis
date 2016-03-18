@@ -194,7 +194,7 @@ body .resultados .label {
 }
 
 .card .item-fecha{
-  background-color: #01a0d7;
+  background-color: #01a0d7 !important;
 }
 
 .usado{
