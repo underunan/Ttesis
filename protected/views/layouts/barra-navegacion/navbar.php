@@ -57,16 +57,26 @@
 
 				       <div class="modal-body">
 				        <div class="container-fluid">
-				   		 		<?php $this->widget('zii.widgets.CMenu',array(
+				   		 		<?php /* $this->widget('zii.widgets.CMenu',array(
                         		    'htmlOptions' => array('class'=>'nav nav-pills nav-stacked', 'aria-labelledby'=>'dLabel'),
                         		    'items'=>array(
                         			array('label'=>' agregar', 'url'=>array('/producto/create'), 'linkOptions'=> array('class' => 'icon icon-plus pull-right')),
                         			array('label'=>' Electronico', 'url'=>array(''), 'linkOptions'=> array('class' => 'icon icon-display pull-right')),
                         			array('label'=>' Ropa', 'url'=>array(''), 'linkOptions'=> array('class' => 'icon icon-man pull-right'))
                         			)
-                        		)); ?>
+                        		));
+                        		*/
 
+                        		 ?>
+
+                        	<ul class="nav nav-pills nav-stacked" aria-labelledby="dLabel">
+				   		 		<li class=""><a href="#"><span class="icon icon-man pull-right"></span> Eléctronico</a></li>
+				   		 		<li class=""><a href="#"><span class="icon icon-woman pull-right"></span> Ropa</a></li>
+				   		 		<li class=""><a href="#"> <span class="icon icon-plus pull-right"></span> Otros</a></li>
+								<li class=""><a href="?r=producto/create"><span class="icon icon-display pull-right"></span>Agregar</a></li>
 				   		 	</ul>
+
+
 				        </div>
 				      </div>
 
