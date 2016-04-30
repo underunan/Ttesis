@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php
 $this->breadcrumbs=array(
 	UserModule::t('Users')=>array('/user'),
@@ -15,7 +16,7 @@ Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
     $('.search-form').toggle();
     return false;
-});	
+});
 $('.search-form form').submit(function(){
     $.fn.yiiGridView.update('user-grid', {
         data: $(this).serialize()
@@ -36,16 +37,12 @@ $('.search-form form').submit(function(){
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php $this->widget('booster.widgets.TbGridView', array(
 	'id'=>'user-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'type'=>'striped',
 	'columns'=>array(
-		array(
-			'name' => 'id',
-			'type'=>'raw',
-			'value' => 'CHtml::link(CHtml::encode($data->id),array("admin/update","id"=>$data->id))',
-		),
 		array(
 			'name' => 'username',
 			'type'=>'raw',
@@ -54,10 +51,8 @@ $('.search-form form').submit(function(){
 		array(
 			'name'=>'email',
 			'type'=>'raw',
-			'value'=>'CHtml::link(UHtml::markSearch($data,"email"), "mailto:".$data->email)',
+			'value'=>'CHtml::encode($data->email)',
 		),
-		'create_at',
-		'lastvisit_at',
 		array(
 			'name'=>'superuser',
 			'value'=>'User::itemAlias("AdminStatus",$data->superuser)',
@@ -69,7 +64,8 @@ $('.search-form form').submit(function(){
 			'filter' => User::itemAlias("UserStatus"),
 		),
 		array(
-			'class'=>'CButtonColumn',
+		    'htmlOptions'=>array('nowrap'=>'nowrap'),
+			'class'=>'booster.widgets.TbButtonColumn',
 		),
 	),
 )); ?>

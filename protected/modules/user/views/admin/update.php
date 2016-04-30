@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php
 $this->breadcrumbs=array(
 	(UserModule::t('Users'))=>array('admin'),
@@ -13,7 +14,6 @@ $this->menu=array(
 );
 ?>
 
-<h1><?php echo  UserModule::t('Update User')." ".$model->id; ?></h1>
 
 <?php
 	echo $this->renderPartial('_form', array('model'=>$model,'profile'=>$profile));

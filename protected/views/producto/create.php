@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php
 /* @var $this ProductoController */
 /* @var $model Producto */
@@ -13,6 +14,5 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create Producto</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

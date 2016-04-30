@@ -18,15 +18,23 @@
 
 				   		 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
 				   		                         		<?php $this->widget('zii.widgets.CMenu',array(
-                        		    'htmlOptions' => array('class'=>'nav navbar-nav pull-right col-xs-12 col-sm-7 col-md-6 col-lg-5'),
+                        		    'htmlOptions' => array('class'=>'nav navbar-nav pull-right col-xs-12 col-sm-8 col-md-6 col-lg-5'),
+                        		    'submenuHtmlOptions'=>array('class'=>'dropdown-menu'),
+                                    'encodeLabel'=>false,
+                                    'activeCssClass' => 'active',
                         		    'items'=>array(
-                        			array('label'=>' Login', 'url'=>array('/user/login'), 'linkOptions'=> array('class' => 'icon icon-user', 'data-toggle' => "modal"),'visible'=>Yii::app()->user->isGuest),
                         			array('label'=>' Inicio', 'url'=>array('/site/index'), 'linkOptions'=> array('class' => 'glyphicon glyphicon-bullhorn')),
+                        			array('label'=>' Catálogo', 'url'=>array('#modalCatalogo'), 'linkOptions'=> array('class' => 'icon icon-menu3', 'data-toggle'=>'modal')),
+                        			array('label'=>' Ubicación', 'url'=>array('#modalCatalogo2'), 'linkOptions'=> array('class' => 'icon icon-menu3', 'data-toggle'=>'modal'), 'visible'=>!Yii::app()->user->isGuest),
+                        			array('label'=>' Únete', 'url'=>array('/user/login'), 'linkOptions'=> array('class' => 'icon icon-user', 'data-toggle' => "modal"),'visible'=>Yii::app()->user->isGuest),
                         			array('label'=>' Registrate', 'url'=>array('/user/registration'), 'linkOptions'=> array('class' => 'glyphicon glyphicon-pencil'), 'visible'=>Yii::app()->user->isGuest),
-                        			array('label'=>' Perfil', 'url'=>array('/user/profile'), 'linkOptions'=> array('class' => 'icon icon-user'), 'visible'=>!Yii::app()->user->isGuest),
-                        			array('label'=>' Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest),
-                        			array('label'=>' Catalogo', 'url'=>array('#modalCatalogo'), 'linkOptions'=> array('class' => 'icon icon-menu3', 'data-toggle'=>'modal')),
-                        			array('label'=>' Ubicacion', 'url'=>array('#modalCatalogo2'), 'linkOptions'=> array('class' => 'icon icon-menu3', 'data-toggle'=>'modal'), 'visible'=>!Yii::app()->user->isGuest)
+                        			array('label'=>' Perfil ('.Yii::app()->user->name.') <span class="caret"></span>', 'url'=>array(''), 'linkOptions'=> array('class' => 'icon icon-user dropdown-toggle','data-toggle' => 'dropdown'), 'visible'=>!Yii::app()->user->isGuest,
+                        			'items'=>array(
+                        			        array('label'=>' Ver mi perfil', 'url'=>array('/user/profile','tag'=>'Ver mi perfil'),'linkOptions'=>array('class'=>'glyphicon glyphicon-cog')),
+                        			        array('label'=>'', 'url'=>array('','tag'=>''),'linkOptions'=>array('class'=>'')),
+                                            array('label'=>' Salir', 'url'=>array('/site/logout','tag'=>'Salir'),'linkOptions'=> array('class'=>'glyphicon glyphicon-off'), 'visible'=>!Yii::app()->user->isGuest),
+                                        ),
+                        'itemOptions'=>array('class'=>'dropdown')),
                         			)
                         		)); ?>
                     	</div>
@@ -70,10 +78,13 @@
                         		 ?>
 
                         	<ul class="nav nav-pills nav-stacked" aria-labelledby="dLabel">
-				   		 		<li class=""><a href="#"><span class="icon icon-man pull-right"></span> Eléctronico</a></li>
+				   		 		<li class=""><a href="#"><span class="icon icon-display pull-right"></span> Eléctronico</a></li>
 				   		 		<li class=""><a href="#"><span class="icon icon-woman pull-right"></span> Ropa</a></li>
 				   		 		<li class=""><a href="#"> <span class="icon icon-plus pull-right"></span> Otros</a></li>
-								<li class=""><a href="?r=producto/create"><span class="icon icon-display pull-right"></span>Agregar</a></li>
+								<?php
+								if(!Yii::app()->user->isGuest){ ?>
+								<li class=""><a href="?r=producto/create"><span class="icon icon-plus pull-right"></span>Agregar</a></li>
+								<?php } ?>
 				   		 	</ul>
 
 

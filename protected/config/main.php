@@ -10,7 +10,7 @@ return array(
 	'name'=>'Tienda_tesis',
 	'theme'=>'classic',
 	// preloading 'log' component
-	'preload'=>array('log'),
+	'preload'=>array('log','booster'),
 
 	// autoloading model and component classes
 	'import'=>array(
@@ -62,6 +62,7 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			//'ipFilters'=>array('127.0.0.1','::1'),
 			'ipFilters'=>array('*','::1'),
+			'generatorPaths'=>array('xt.YiiBooster.src.components.gii'),
 		),
 	),
 
@@ -110,6 +111,9 @@ return array(
 				*/
 			),
 		),
+		'booster'=>array(
+                'class'=>'ext.YiiBooster.src.components.Booster',
+		    ),
 
 	),
 

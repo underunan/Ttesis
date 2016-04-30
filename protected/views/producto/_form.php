@@ -15,73 +15,74 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php echo $form->errorSummary($model); ?>
+	<div class="panel panel-default info-usuario update">
+  <div class="panel-heading">
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'idusuario'); ?>
-		<?php echo $form->textField($model,'idusuario'); ?>
-		<?php echo $form->error($model,'idusuario'); ?>
+        <h4 class="text-center"><i class="glyphicon glyphicon-save-file pull-left" style="color: #428bca; font-size:30px;"></i> Agregar un nuevo producto</h4>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+        <?php echo $form->labelEx($model,'idusuario'); ?>
+		<?php echo $form->textField($model,'idusuario',array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'idusuario', array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'idcategoria'); ?>
-		<?php echo $form->textField($model,'idcategoria'); ?>
-		<?php echo $form->error($model,'idcategoria'); ?>
+	<div class="form-group">
+        <?php echo $form->labelEx($model,'idcategoria'); ?>
+		<?php echo $form->textField($model,'idcategoria',array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'idcategoria', array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'idmoneda'); ?>
-		<?php echo $form->textField($model,'idmoneda'); ?>
-		<?php echo $form->error($model,'idmoneda'); ?>
+	<div class="form-group">
+        <?php echo $form->labelEx($model,'idmoneda'); ?>
+		<?php echo $form->textField($model,'idmoneda',array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'idmoneda', array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'idestado_fisico'); ?>
-		<?php echo $form->textField($model,'idestado_fisico'); ?>
-		<?php echo $form->error($model,'idestado_fisico'); ?>
+	<div class="form-group">
+        <?php echo $form->labelEx($model,'idestado_fisico'); ?>
+		<?php echo $form->textField($model,'idestado_fisico',array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'idestado_fisico', array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'idbarrio'); ?>
-		<?php echo $form->textField($model,'idbarrio'); ?>
-		<?php echo $form->error($model,'idbarrio'); ?>
+	<div class="form-group">
+        <?php echo $form->labelEx($model,'idbarrio'); ?>
+		<?php echo $form->textField($model,'idbarrio',array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'idbarrio', array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'nombre'); ?>
-		<?php echo $form->textField($model,'nombre',array('size'=>30,'maxlength'=>30)); ?>
-		<?php echo $form->error($model,'nombre'); ?>
+	<div class="form-group">
+<?php echo $form->labelEx($model,'nombre'); ?>
+		<?php echo $form->textField($model,'nombre',array('size'=>30,'maxlength'=>30,'class'=>'form-control')); ?>
+		<?php echo $form->error($model,'nombre', array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'precio'); ?>
-		<?php echo $form->textField($model,'precio'); ?>
-		<?php echo $form->error($model,'precio'); ?>
+	<div class="form-group">
+<?php echo $form->labelEx($model,'precio'); ?>
+		<?php echo $form->textField($model,'precio',array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'precio',array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'descripcion'); ?>
-		<?php echo $form->textField($model,'descripcion'); ?>
-		<?php echo $form->error($model,'descripcion'); ?>
+	<div class="form-group">
+<?php echo $form->labelEx($model,'descripcion'); ?>
+		<?php echo $form->textField($model,'descripcion',array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'descripcion',array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'fecha_publicacion'); ?>
-		<?php echo $form->textField($model,'fecha_publicacion'); ?>
-		<?php echo $form->error($model,'fecha_publicacion'); ?>
+	<div class="form-group">
+<?php echo $form->labelEx($model,'fecha_publicacion'); ?>
+		<?php echo $form->textField($model,'fecha_publicacion',array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'fecha_publicacion',array('class'=>'alert alert-danger')); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'direccion'); ?>
-		<?php echo $form->textArea($model,'direccion',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'direccion'); ?>
+	<div class="form-group">
+<?php echo $form->labelEx($model,'direccion'); ?>
+		<?php echo $form->textArea($model,'direccion',array('rows'=>6, 'cols'=>50,'class'=>'form-control')); ?>
+		<?php echo $form->error($model,'direccion',array('class'=>'alert alert-danger')); ?>
 	</div>
+    <p class="form-group">
+    <div class="col-sm-4 hidden-xs"></div>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Guardar',array('class'=>'btn btn-success btn-lg col-sm-4 col-xs-12')); ?>
+		 <div class="col-sm-4 hidden-xs"></div>
+		</p>
+  </div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+  <div class="panel-footer">
+
+  </div>
+</div>
 
 <?php $this->endWidget(); ?>
 
