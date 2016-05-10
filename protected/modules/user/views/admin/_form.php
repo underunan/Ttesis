@@ -34,7 +34,7 @@ $profileFields=$profile->getFields();
 			echo $form->textField($profile,$field->varname,array('class'=>'form-control','size'=>60,'maxlength'=>(($field->field_size)?$field->field_size:255)));
 		}
 		 ?>
-		<?php echo $form->error($profile,$field->varname,array('class'=>'alert alert-danger')); ?>
+		<?php echo $form->error($profile,$field->varname,array('class'=>'text-danger text-center')); ?>
 	</div>
 			<?php
 			}

@@ -32,6 +32,8 @@
                         			'items'=>array(
                         			        array('label'=>' Ver mi perfil', 'url'=>array('/user/profile','tag'=>'Ver mi perfil'),'linkOptions'=>array('class'=>'glyphicon glyphicon-cog')),
                         			        array('label'=>'', 'url'=>array('','tag'=>''),'linkOptions'=>array('class'=>'')),
+                        			        array('label'=>' Agregar producto', 'url'=>array('/producto/create','tag'=>'Agregar producto'),'linkOptions'=>array('class'=>'glyphicon glyphicon-pencil'),'visible'=>!Yii::app()->user->isGuest),
+                        			        array('label'=>'', 'url'=>array('','tag'=>''),'linkOptions'=>array('class'=>'')),
                                             array('label'=>' Salir', 'url'=>array('/site/logout','tag'=>'Salir'),'linkOptions'=> array('class'=>'glyphicon glyphicon-off'), 'visible'=>!Yii::app()->user->isGuest),
                                         ),
                         'itemOptions'=>array('class'=>'dropdown')),
@@ -206,8 +208,6 @@
 		</div>
 	</nav>
 </div>
-
-<script type="text/javascript" src="<?php echo Yii::app()->theme->baseUrl;?>/js/jquery-1.11.3.min.js"></script>
 
 <?php /*<div class="row">
 	<nav class="cabecera-nav">

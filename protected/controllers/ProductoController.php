@@ -60,8 +60,7 @@ class ProductoController extends Controller
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
-	public function actionCreate()
-	{
+	/*public function actionCreate(){
 		$model=new Producto;
 
 		// Uncomment the following line if AJAX validation is needed
@@ -77,7 +76,37 @@ class ProductoController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 		));
+	}*/
+
+	public function actionCreate()
+	{
+		$model=new Producto;
+		$model_imagen=new Imagen;
+
+			if(isset($_POST['Producto'], $_POST['Imagen']))
+		{
+			$model->attributes=$_POST['Producto'];
+			$model_imagen->attributes=$_POST['Imagen'];
+
+			$model_imagen->idproducto = 19;
+			$valid = $model->validate();
+			$valid = $model_imagen->validate() && $valid;
+
+			if($valid){
+			    if($model->save(false))
+			    $model_imagen->idproducto = $model->idproducto;
+			    if($model_imagen->save(false)){
+				$this->redirect(array('view','id'=>$model->idproducto));
+		            }
+		        }
+	        }
+
+		$this->render('create',array(
+			'model'=>$model,
+			'model_imagen'=>$model_imagen,
+		));
 	}
+
 
 	/**
 	 * Updates a particular model.

@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Change Password");
 $this->breadcrumbs=array(
 	UserModule::t("Profile") => array('/user/profile'),
@@ -14,9 +15,6 @@ $this->menu=array(
 );
 ?>
 
-<h1><?php echo UserModule::t("Change password"); ?></h1>
-
-<div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'changepassword-form',
 	'enableAjaxValidation'=>true,
@@ -25,34 +23,44 @@ $this->menu=array(
 	),
 )); ?>
 
-	<p class="note"><?php echo UserModule::t('Fields with <span class="required">*</span> are required.'); ?></p>
-	<?php echo $form->errorSummary($model); ?>
-	
-	<div class="row">
-	<?php echo $form->labelEx($model,'oldPassword'); ?>
-	<?php echo $form->passwordField($model,'oldPassword'); ?>
-	<?php echo $form->error($model,'oldPassword'); ?>
-	</div>
-	
-	<div class="row">
-	<?php echo $form->labelEx($model,'password'); ?>
-	<?php echo $form->passwordField($model,'password'); ?>
-	<?php echo $form->error($model,'password'); ?>
-	<p class="hint">
-	<?php echo UserModule::t("Minimal password length 4 symbols."); ?>
-	</p>
-	</div>
-	
-	<div class="row">
-	<?php echo $form->labelEx($model,'verifyPassword'); ?>
-	<?php echo $form->passwordField($model,'verifyPassword'); ?>
-	<?php echo $form->error($model,'verifyPassword'); ?>
-	</div>
-	
-	
-	<div class="row submit">
-	<?php echo CHtml::submitButton(UserModule::t("Save")); ?>
-	</div>
+
+	<div class="panel panel-default info-usuario update">
+    <div class="panel-heading">
+    <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-responsive img-circle pull-left" alt="image info user" width="35px" height="35px">
+        <h4 class="text-center">Cambiar contraseña<a href="?r=user/profile/" class="btn btn-info btn-sm pull-right hidden-xs">Cancelar</a></h4>
+        <a href="?r=user/profile/" class="btn btn-info btn-sm visible-xs">Cancelar</a></h4>
+  </div>
+  <div class="panel-body">
+
+
+		<div class="form-group">
+            <?php echo $form->labelEx($model,'Contraseña vieja'); ?>
+        	<?php echo $form->passwordField($model,'oldPassword',array('class'=>'form-control')); ?>
+        	<?php echo $form->error($model,'oldPassword',array('class'=>'text-danger')); ?>
+		</div>
+
+      <div class="form-group">
+            <?php echo $form->labelEx($model,'Nueva contraseña'); ?>
+        	<?php echo $form->passwordField($model,'password',array('class'=>'form-control')); ?>
+        	<?php echo $form->error($model,'password',array('class'=>'text-danger')); ?>
+        	<p class="hint">
+                <?php echo UserModule::t("4 caracteres como tamaño minimo."); ?>
+        	</p>
+
+      </div>
+
+      <div class="form-group">
+            <?php echo $form->labelEx($model,'Repitir contraseña'); ?>
+        	<?php echo $form->passwordField($model,'verifyPassword',array('class'=>'form-control')); ?>
+        	<?php echo $form->error($model,'verifyPassword',array('class'=>'text-danger')); ?>
+      </div>
+
+    <div class="form-group">
+        <?php echo CHtml::submitButton(UserModule::t("Guardar"), array('class'=>'btn btn-success')); ?>
+     </div>
+
+</div>
+
 
 <?php $this->endWidget(); ?>
 </div><!-- form -->

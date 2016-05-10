@@ -1,12 +1,7 @@
-l<?php
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
+<?php
 $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Login");
 ?>
-
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fonts/icommon-free/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 
 
 <div class="body">
@@ -21,18 +16,19 @@ $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Login");
 
            <?php echo CHtml::beginForm(); ?>
 
-                	<?php echo CHtml::errorSummary($model); ?>
+                	<?php //echo CHtml::errorSummary($model); ?>
 
                     <? /*********************************************************/?>
                     <div class="form-group">
 
                 	  <?php echo CHtml::activeTextField($model,'username',array('class'=>'form-control', 'placeholder'=>'Ingresa tu nombre de usuario'));?>
+                	  <?php echo CHtml::error($model,'username',array('class'=>'text-danger text-center')); ?>
 					</div>
 
 		            <div class="form-group">
 
                     <?php echo CHtml::activePasswordField($model,'password', array('class'=>'form-control', 'placeholder'=>'Ingresa tu contraseña')); ?>
-
+                    <?php echo CHtml::error($model,'password',array('class'=>'text-danger text-center')); ?>
 	            	</div>
 
 

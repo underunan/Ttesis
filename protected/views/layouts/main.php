@@ -68,10 +68,15 @@
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 <!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw86BjBuILI2xv5MAsgPfOOBQUc0ZByXY&callback=inicializar" async defer></script-->
 <!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
+
 <script type="text/javascript" src="js/jquery.vide.js"></script>
 <script type="text/javascript" src="js/bntBuscar.js"></script>
 <script type="text/javascript" src="js/map_script.js"></script>
 <script src="js/pinterestgrid.js"></script>
+
+
+
+
 <script type="text/javascript">
     (function () {
         'use strict';
@@ -101,33 +106,3 @@
 </script>
 	</body>
 </html>
-
-<?php /*
-
-<!--div class="container" id="page">
-
-<head>
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
-    </head>
-
-
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Inicio', 'url'=>array('/site/index')),
-				array('label'=>'Nosotros', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Registrate', 'url'=>array('/user/registration')),
-				array('label'=>'Login', 'url'=>array('/user/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/user/logout'), 'visible'=>!Yii::app()->user->isGuest)),
-		)); ?>
-	</div-->
-	<!-- mainmenu -->
-	<?php /* if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif*/?>

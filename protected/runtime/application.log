@@ -3891,3 +3891,67 @@ REQUEST_URI=/Ttesis/index.php?r=imagen/view&id=7
 in /home/progdaniel/Web/Ttesis/protected/views/imagen/view.php (118)
 in /home/progdaniel/Web/Ttesis/protected/controllers/ImagenController.php (57)
 in /home/progdaniel/Web/Ttesis/index.php (13)
+2016/05/10 19:35:07 [error] [exception.CException] exception 'CException' with message 'Property "Producto.idmoneda0" is not defined.' in /home/progdaniel/Web/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/progdaniel/Web/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('idmoneda0')
+#1 /home/progdaniel/Web/Ttesis/protected/views/imagen/view.php(90): CActiveRecord->__get('idmoneda0')
+#2 /home/progdaniel/Web/yii/framework/web/CBaseController.php(126): require('/home/progdanie...')
+#3 /home/progdaniel/Web/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/progdanie...', Array, true)
+#4 /home/progdaniel/Web/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/progdanie...', Array, true)
+#5 /home/progdaniel/Web/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/progdaniel/Web/Ttesis/protected/controllers/ImagenController.php(57): CController->render('view', Array)
+#7 [internal function]: ImagenController->actionView('4')
+#8 /home/progdaniel/Web/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ImagenController), Array)
+#9 /home/progdaniel/Web/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ImagenController), Object(ReflectionMethod), Array)
+#10 /home/progdaniel/Web/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/progdaniel/Web/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/progdaniel/Web/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/progdaniel/Web/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/progdaniel/Web/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/progdaniel/Web/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/progdaniel/Web/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/progdaniel/Web/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/progdaniel/Web/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/progdaniel/Web/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('imagen/view')
+#20 /home/progdaniel/Web/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /home/progdaniel/Web/Ttesis/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/Ttesis/index.php?r=imagen/view&id=4
+HTTP_REFERER=http://54.208.158.254/Ttesis/index.php?r=imagen
+---
+2016/05/10 19:35:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "users".' in /home/progdaniel/Web/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /home/progdaniel/Web/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users')
+#1 /home/progdaniel/Web/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#2 /home/progdaniel/Web/Ttesis/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/Ttesis/index.php?r=users
+---
+2016/05/10 19:38:32 [error] [exception.CException] exception 'CException' with message 'Property "Producto.idmoneda0" is not defined.' in /home/progdaniel/Web/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /home/progdaniel/Web/yii/framework/db/ar/CActiveRecord.php(145): CComponent->__get('idmoneda0')
+#1 /home/progdaniel/Web/Ttesis/protected/views/imagen/view.php(90): CActiveRecord->__get('idmoneda0')
+#2 /home/progdaniel/Web/yii/framework/web/CBaseController.php(126): require('/home/progdanie...')
+#3 /home/progdaniel/Web/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/home/progdanie...', Array, true)
+#4 /home/progdaniel/Web/yii/framework/web/CController.php(869): CBaseController->renderFile('/home/progdanie...', Array, true)
+#5 /home/progdaniel/Web/yii/framework/web/CController.php(782): CController->renderPartial('view', Array, true)
+#6 /home/progdaniel/Web/Ttesis/protected/controllers/ImagenController.php(57): CController->render('view', Array)
+#7 [internal function]: ImagenController->actionView('10')
+#8 /home/progdaniel/Web/yii/framework/web/actions/CAction.php(109): ReflectionMethod->invokeArgs(Object(ImagenController), Array)
+#9 /home/progdaniel/Web/yii/framework/web/actions/CInlineAction.php(47): CAction->runWithParamsInternal(Object(ImagenController), Object(ReflectionMethod), Array)
+#10 /home/progdaniel/Web/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#11 /home/progdaniel/Web/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#12 /home/progdaniel/Web/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#13 /home/progdaniel/Web/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#14 /home/progdaniel/Web/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#15 /home/progdaniel/Web/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#16 /home/progdaniel/Web/yii/framework/web/CController.php(291): CFilterChain->run()
+#17 /home/progdaniel/Web/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#18 /home/progdaniel/Web/yii/framework/web/CWebApplication.php(282): CController->run('view')
+#19 /home/progdaniel/Web/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('imagen/view')
+#20 /home/progdaniel/Web/yii/framework/base/CApplication.php(185): CWebApplication->processRequest()
+#21 /home/progdaniel/Web/Ttesis/index.php(13): CApplication->run()
+#22 {main}
+REQUEST_URI=/Ttesis/index.php?r=imagen/view&id=10
+HTTP_REFERER=http://54.208.158.254/Ttesis/index.php?r=imagen
+---

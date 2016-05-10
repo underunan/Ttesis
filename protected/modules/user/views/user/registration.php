@@ -1,31 +1,10 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Registration");?>
 <?php /*$this->breadcrumbs=array(UserModule::t("Registration"),);*/?>
 
 
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fonts/icommon-free/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 
 
-<div>
-	<div class="jumbotron">
-		<div class="container">
-			<h1><?php echo UserModule::t("Registro Gratis");?></h1>
-			<p>Una vez que te registres, podrás empezar a anunciar o promocionar tus articulos a vender, completamente gratis.</p>
-
-		<div class="panel panel-info col-xs-12 col-sm-12">
-		<div class="panel-heading text-center"><h4>Crear nueva cuenta</h4></div>
-		  <div class="panel-body">
-
-<?php if(Yii::app()->user->hasFlash('registration')): ?>
-<div class="success">
-<?php echo Yii::app()->user->getFlash('registration'); ?>
-</div>
-<?php else: ?>
-
-<div class="form">
 <?php  $form=$this->beginWidget('UActiveForm', array(
 	'id'=>'registration-form',
 	'enableAjaxValidation'=>true,
@@ -36,26 +15,29 @@
 	'htmlOptions' => array('enctype'=>'multipart/form-data'),
 ));  ?>
 
-	<h3 class="note text-danger"><?php echo UserModule::t('Todos los campos son requeridos.'); ?></h3>
 	<?php echo $form->errorSummary(array($model,$profile)); ?>
 <?php /***********************+++++FORM++++*********************/?>
-	<form class="form-horizontal">
 
-        <?php
+
+<?php /***********************+++++FORM++++*********************/?>
+
+<div class="panel panel-default info-usuario update">
+  <div class="panel-heading">
+    <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-responsive img-circle pull-left" alt="image info user" width="35px" height="35px">
+        <h4 class="text-center">Registrate</h4>
+  </div>
+  <div class="panel-body">
+
+
+
+		<?php
 		$profileFields=$profile->getFields();
 		if ($profileFields) {
 			foreach($profileFields as $field) {
 			?>
-
-
-		<div class="form-group col-xs-12">
-	            	<?php echo $form->labelEx($profile,$field->varname,array("class"=> "col-sm-3 control-label") ); ?>
-						<div class="input-group col-sm-4">
-
-							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-
-
-                    		<?php
+			<div class="form-group">
+            <?php echo $form->labelEx($profile,$field->varname); ?>
+            <?php
                     		if ($widgetEdit = $field->widgetEdit($profile)) {
                     			echo $widgetEdit;
                     		} elseif ($field->range) {
@@ -66,103 +48,45 @@
                     			echo $form->textField($profile,$field->varname,array('class'=>'form-control','size'=>50,'maxlength'=>(($field->field_size)?$field->field_size:255)));
                     		}
                     		 ?>
-
-
-						</div>
-						<?php echo $form->error($profile,$field->varname,array('class'=>'text-center col-sm-6 col-sm-offset-2 text-danger')); ?>
-		</div>
-
-
-
+						<?php echo $form->error($profile,$field->varname,array('class'=>'text-danger text-center')); ?>
+            </div>
 			<?php
 			}
 		}
 ?>
 
-		<div class="form-group col-xs-12">
 
-						<label class= 'col-sm-3 control-label'>Nombre de usuario</label>
-						<div class="input-group col-sm-4">
+      <div class="form-group">
+        <label class= ' control-label'>Nombre de usuario</label>
+        <?php echo $form->textField($model,'username',array('class'=>'form-control')); ?>
+        <?php echo $form->error($model,'username',array('class'=>'text-danger text-center')); ?>
+      </div>
 
-							<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                        	<?php echo $form->textField($model,'username',array('class'=>'form-control')); ?>
+      <div class="form-group">
+        <label class= 'col-sm-3 control-label'>Correo</label>
+		<?php echo $form->textField($model,'email', array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'email',array('class'=>'text-danger text-center')); ?>
+     </div>
 
-					</div>
-<?php echo $form->error($model,'username',array('class'=>'text-center col-sm-6 col-sm-offset-2 text-danger')); ?>
-		</div>
+      <div class="form-group">
+        <label class= 'control-label'>Contraseña</label>
+        <?php echo $form->passwordField($model,'password', array('class'=>'form-control',)); ?>
+		<?php echo $form->error($model,'password',array('class'=>'text-danger text-center')); ?>
+      </div>
 
-		<div class="form-group col-xs-12">
-		    <label class= 'col-sm-3 control-label'>Contraseña</label>
-						<div class="input-group col-sm-4">
-							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                        	<?php echo $form->passwordField($model,'password', array('class'=>'form-control',)); ?>
+    <div class="form-group">
+        <label class= 'control-label'>Confirmar contraseña</label>
+		<?php echo $form->passwordField($model,'verifyPassword', array('class'=>'form-control')); ?>
+		<?php echo $form->error($model,'verifyPassword',array('class'=>'text-danger text-center')); ?>
+     </div>
 
+     <div class="form-group">
+      <div class="col-sm-4 hidden-xs"></div>
+      <?php echo CHtml::submitButton(UserModule::t("Registrarse"), array('class'=>'btn btn-success btn-lg col-sm-4 col-xs-12')); ?>
+      <div class="col-sm-4 hidden-xs"></div>
+     </div>
 
-						</div>
-							<?php echo $form->error($model,'password',array('class'=>'text-center col-sm-6 col-sm-offset-2 text-danger')); ?>
-		</div>
-
-		<div class="form-group form-group col-sm-12">
-					<label class= 'col-sm-3 control-label'>Confirmar contraseña</label>
-						<div class="input-group col-sm-4">
-							<span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-
-							<?php echo $form->passwordField($model,'verifyPassword', array('class'=>'form-control')); ?>
-
-
-						</div>
-						<?php echo $form->error($model,'verifyPassword',array('class'=>'text-center col-sm-6 col-sm-offset-2 text-danger')); ?>
-						 <p class="" role="alert">
-                            	<?php //echo UserModule::t("4 caracteres minimo"); ?>
-                        </p>
-
-		</div>
-
-			<div class="form-group col-xs-12">
-			<label class= 'col-sm-3 control-label'>Correo</label>
-						<div class="input-group col-sm-4">
-							<span class="input-group-addon"><span>@</span></span>
-
-							<?php echo $form->textField($model,'email', array('class'=>'form-control')); ?>
-
-						</div>
-						<?php echo $form->error($model,'email',array('class'=>'text-center col-sm-6 col-sm-offset-2 text-danger')); ?>
-			</div>
-
-
-
-
-
-
-
-
-	<?php if (UserModule::doCaptcha('registration')): ?>
-	<div class="row">
-		<?php echo $form->labelEx($model,'verifyCode'); ?>
-
-		<?php $this->widget('CCaptcha'); ?>
-		<?php echo $form->textField($model,'verifyCode'); ?>
-		<?php echo $form->error($model,'verifyCode'); ?>
-
-		<p class="hint"><?php echo UserModule::t("Introduce los caracteres que ves en la imagen"); ?>
-		<br/><?php echo UserModule::t("Letters are not case-sensitive."); ?></p>
-	</div>
-	<?php endif; ?>
-
-	<div class="form-group">
-
-		<?php echo CHtml::submitButton(UserModule::t("Registrarse"), array('class'=>'btn btn-success btn-lg col-md-4 col-sm-offset-3 col-xs-12')); ?>
-
-	</div>
-
-</form>
-<?php /***********************+++++FORM++++*********************/?>
+  </div>
+</div>
 
 <?php $this->endWidget(); ?>
-</div><!-- form -->
-
-</div>
-</div>
-</div>
-</div>
-<?php endif; ?>

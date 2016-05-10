@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php  $this->pageTitle=Yii::app()->name . ' - '.UserModule::t("Profile");
 $this->breadcrumbs=array(
 	UserModule::t("Profile")=>array('profile'),
@@ -82,7 +83,7 @@ $form=$this->beginWidget('CActiveForm', array(
 <div class="panel panel-default info-usuario update">
   <div class="panel-heading">
     <img src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="img-responsive img-circle pull-left" alt="image info user" width="35px" height="35px">
-        <h4 class="text-center">Actualizar perfil de usuario <a href="?r=user/profile/changepassword" class="btn btn-info btn-sm pull-right hidden-xs">Cancelar</a></h4>
+        <h4 class="text-center">Actualizar perfil de usuario <a href="?r=user/profile/" class="btn btn-info btn-sm pull-right hidden-xs">Cancelar</a></h4>
         <a href="?r=user/profile/" class="btn btn-info btn-sm visible-xs">Cancelar</a></h4>
   </div>
   <div class="panel-body">

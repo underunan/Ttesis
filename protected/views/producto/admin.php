@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php
 /* @var $this ProductoController */
 /* @var $model Producto */
@@ -40,26 +41,36 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('zii.widgets.grid.CGridView', array(
+<?php $this->widget('booster.widgets.TbGridView', array(
 	'id'=>'producto-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
+	'type'=>'striped',
 	'columns'=>array(
-		'idproducto',
+		/*'idproducto',
 		'idusuario',
 		'idcategoria',
 		'idmoneda',
 		'idestado_fisico',
 		'idbarrio',
-		/*
+		*/
 		'nombre',
 		'precio',
 		'descripcion',
 		'fecha_publicacion',
 		'direccion',
-		*/
 		array(
-			'class'=>'CButtonColumn',
-		),
+			'htmlOptions'=>array('nowrap'=>'nowrap'),
+			'class'=>'booster.widgets.TbButtonColumn',
+			'template'=>'{update}{delete}',
+			'buttons'=>array(
+                    'update' => array(
+                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Actualizar')),
+            ),
+            'delete' => array(
+                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Eliminar')),
+            )
+			    )
+		)
 	),
 )); ?>

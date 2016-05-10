@@ -66,6 +66,15 @@ $('.search-form form').submit(function(){
 		array(
 		    'htmlOptions'=>array('nowrap'=>'nowrap'),
 			'class'=>'booster.widgets.TbButtonColumn',
+			'template'=>'{update}{delete}',
+			'buttons'=>array(
+                    'update' => array(
+                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Actualizar')),
+            ),
+            'delete' => array(
+                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Eliminar')),
+            )
+			    )
 		),
 	),
 )); ?>

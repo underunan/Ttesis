@@ -1,16 +1,19 @@
 <section class="container-fluid video_form">
 		<div style="height:500px; width:100%;" data-vide-bg="<?php echo Yii::app()->request->baseUrl;?>/video/video.png">
 		</div>
-		<form action="" class="formulario">
+
+		<form class="formulario">
+
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Lugar a buscar">
+				<input type="text" class="form-control" placeholder="Lugar a buscar" href="#">
 			</div>
 			<div class="input-group">
 				<input type="text" class="form-control" placeholder="Producto a buscar">
 			</div>
 			<div class="input-group">
-				<button class="bnt btn-danger btn-lg" id="bntBuscar">Buscar</button>
+				<butto class="bnt btn-danger btn-lg" id="bntBuscar">Buscar</button>
 			</div>
+
 		</form>
 	</section>
 		<section class="container informacion">
