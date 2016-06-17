@@ -15,7 +15,7 @@ class Producto2Controller extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+		//	'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -57,102 +57,41 @@ class Producto2Controller extends Controller
 	}
 
 	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new Producto2;
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Producto2']))
-		{
-			$model->attributes=$_POST['Producto2'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->idproducto));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Producto2']))
-		{
-			$model->attributes=$_POST['Producto2'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->idproducto));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
-	{
-		$this->loadModel($id)->delete();
-
-		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	}
 
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Producto2');
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
+
+        $dataProvider = new CActiveDataProvider('Producto');
+      $model=new Producto('search');
+	  $model->unsetAttributes();  // clear any default values
+        $model2 = new Producto('search' );
+	    $model2 = Producto::model()->findAll();
+		if(isset($_GET['Producto']))
+
+			$model->attributes=$_GET['Producto'];
+        	$this->render('index',array(
+		    'model2'=>$model2, 'model'=>$model,'dataProvider'=>$dataProvider,
 		));
 	}
 
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new Producto2('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Producto2']))
-			$model->attributes=$_GET['Producto2'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
 
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Producto2 the loaded model
+	 * @return Producto the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Producto2::model()->findByPk($id);
+		$model=Producto::model()->findByPk($id);
 		if($model===null)
 			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
@@ -160,11 +99,11 @@ class Producto2Controller extends Controller
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Producto2 $model the model to be validated
+	 * @param Producto $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='producto2-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='producto-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();

@@ -12,10 +12,9 @@
 
 
 $this->menu=array(
-	array('label'=>'List Imagen', 'url'=>array('index')),
-	array('label'=>'Create Imagen', 'url'=>array('create')),
-	array('label'=>'Update Imagen', 'url'=>array('update', 'id'=>$model->idimagen)),
-	array('label'=>'Delete Imagen', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idimagen),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Ir a inicio', 'url'=>array('index')),
+	array('label'=>'Agrega un producto', 'url'=>array('producto/create')),
+	array('label'=>'Eliminar', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->idimagen),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Imagen', 'url'=>array('admin')),
 );
 ?>
@@ -54,18 +53,24 @@ $this->breadcrumbs=array(
 						<p class="item-codigo"><span>Codigo producto: </span> <?php echo CHtml::encode($model->idproducto0->idproducto); ?></p>
 						<p class="item-marca"><span>Estado del producto: </span>  <?php $estado = '0'; if(CHtml::encode($model->idproducto0->idestado_fisico)== 1){$estado = 'nuevo';}else{$estado = 'usado' ; } echo $estado;?>	</p>
 
-                        <p class="item-codigo"><span>Fecha de publicacion: </span> <?php echo CHtml::encode($model->idproducto0->fecha_publicacion); ?>></p>
-                        <p class="item-codigo"><span>Direccion: </span> <?php echo CHtml::encode($model->idproducto0->direccion); ?>></p>
+                        <p class="item-codigo"><span>Fecha de publicacion: </span> <?php echo CHtml::encode($model->idproducto0->fecha_publicacion); ?></p>
+                        <p class="item-codigo"><span>Direccion: </span> <?php echo CHtml::encode($model->idproducto0->direccion); ?></p>
+                        <p class="item-codigo"><span>Publicado por: </span>
+                        <?php echo CHtml::encode($model->idproducto0->idusuario0->profiles->firstname);?>
+                        <?php echo CHtml::encode($model->idproducto0->idusuario0->profiles->lastname); ?></p>
 
-
-	<br />
+                        <p class="item-codigo"><span>Telefono: </span>
+                        <?php echo CHtml::encode($model->idproducto0->idusuario0->profiles->cellphone);?>
+                        <?php echo CHtml::encode($model->idproducto0->idusuario0->profiles->linea); ?></p>
+                        <br />
 
 					</div>
 					<div class="item-descripcion col-sm-12">
-					<p class="item-codigo"><span>Descripcion: </span> <?php echo CHtml::encode($model->idproducto0->descripcion); ?>></p>
+					<p class="item-codigo"><span>Descripcion: </span> <?php echo CHtml::encode($model->idproducto0->descripcion); ?></p>
 					</div>
 				</div>
-				<div class="barra-talla-color row">
+
+				<?php /*<div class="barra-talla-color row">
 					<div class="item-color col-sm-5">
 						<span>Colores</span>
 						<ul class="list-inline">
@@ -82,7 +87,7 @@ $this->breadcrumbs=array(
 							<li class="talla_3 col-sm-2 well">L</li>
 						</ul>
 					</div>
-				</div>
+				</div>*/ ?>
 				<div class="barra-precio-compartir row">
 					<div class="item-precio col-sm-4">
 
@@ -90,6 +95,7 @@ $this->breadcrumbs=array(
                          <?php $moneda = '0'; if(CHtml::encode($model->idproducto0->idmoneda0->moneda)=='cordobas'){$moneda = 'C$';}else{$moneda = 'U$';} ?>
 						<!--span class="badge pull-right"><s>$250</s></span-->
 						<div class="text-right"><?php echo CHtml::encode($model->idproducto0->precio); echo " ".$moneda;?></div>
+
 					</div>
 					<div class="item-compartir col-sm-8 col-xs-12 well">
 						<div class="item-icon row">
@@ -132,7 +138,7 @@ console.log("hola desde javscript");
       zoom: 14,
       mapTypeId: 'roadmap'
     });
-   //pasamos el json a string  
+   //pasamos el json a string
  var data_1 = "'<?php echo CHtml::encode($model->idproducto0->idbarrio0->latlonne); ?>'" ;
  var data_2 = "'<?php echo CHtml::encode($model->idproducto0->idbarrio0->latlonso); ?>'";
   var lat = JSON.parse(data_1.substring(1,data_1.length-1));

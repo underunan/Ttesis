@@ -2,13 +2,17 @@
 <!DOCTYPE html>
 <html lang="es">
 
-    <meta name="language" content="es">
+
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<meta name="language" content="es">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzfZm59iFzSPrwsc781ByiEsKl4aeuZow"></script>
+
 	<title>Explora las tiendas</title>
 	<link rel="stylesheet" type="text/css" href="fonts/icommon-free/style.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
+
 
     <style>
         .body{
@@ -59,7 +63,8 @@
 	<?php include 'barra-navegacion/navbar.php';?>
 	</header>
 
-	<?php echo $content; ?>
+	<?php echo $content;?>
+
 <div></div>
     <?php include 'pie-pagina/footer.php';?>
 

@@ -31,7 +31,7 @@ class SiteController extends Controller
 		// using the default layout 'protected/views/layouts/main.php'
 		//$this->render('index');
 
-		$this->redirect('index.php?r=imagen');
+		$this->redirect('index.php?r=producto');
 	}
 
 	/**

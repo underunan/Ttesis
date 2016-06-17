@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update EstadoFisico <?php echo $model->idestado_fisico; ?></h1>
+<h1>Actualizar EstadoFisico <?php echo $model->idestado_fisico; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

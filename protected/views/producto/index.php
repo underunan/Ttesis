@@ -1,19 +1,46 @@
-	<section class="container-fluid video_form">
-		<div style="height:500px; width:100%;" data-vide-bg="<?php echo Yii::app()->request->baseUrl;?>/video/video.png">
+
+<section class="container-fluid video_form">
+
+		<div style="height:500px; width:100%;" data-vide-bg="video/vid">
 		</div>
-		<form action="" class="formulario">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Lugar a buscar">
-			</div>
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Producto a buscar">
-			</div>
-			<div class="input-group">
-				<button class="bnt btn-danger btn-lg" id="bntBuscar">Buscar</button>
-			</div>
+
+		<form class="formulario" id="formularios">
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+            	'action'=>Yii::app()->createUrl($this->route),
+            	'method'=>'get',
+            )); ?>
+
+    			<!--div class="input-group">
+    				<input type="text" class="form-control" placeholder="Lugar a buscar" href="#">
+    			</div-->
+
+            	<div class="input-group">
+            		<?php echo $form->textField($model,'nombre',array('class'=>'form-control', 'size'=>50, 'placeholder'=>'Producto a buscar','id'=>'PALABRA_BUSQUEDA','style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();' )); ?>
+            	</div>
+
+            	<div class="input-group">
+            		<?php echo CHtml::submitButton('Buscar', array('class'=>'bnt btn-danger btn-lg', 'id'=>'bntBuscar')); ?>
+            	</div>
+
+ <?php $this->endWidget(); ?>
+
+
+
 		</form>
 	</section>
-		<section class="container informacion">
+
+
+
+<div class="wide form">
+
+
+
+</div><!-- search-form -->
+
+
+
+				<section class="container informacion">
 			<div class="row">
 			<article class="col-md-4 col-lg-4">
 				<span class="icon-brujula"></span>
@@ -45,26 +72,31 @@
 			</div>
 		</section>
 
-		<section class="resultados container">
-			<h1>EXPLORA LAS TIENDAS</h1>
-			<div class="row">
-<?php
+<section class="resultados container">
+	<h1>EXPLORA LAS TIENDAS</h1>
+	 <?php
+                /* @var $this ImagenController */
+                /* @var $dataProvider CActiveDataProvider */
 
-/* @var $this ProductoController */
-/* @var $dataProvider CActiveDataProvider */
-
-$this->breadcrumbs=array(
-	'Productos',
-);
-
-/*$this->menu=array(
-	array('label'=>'Create Producto', 'url'=>array('create')),
-	array('label'=>'Manage Producto', 'url'=>array('admin')),
-);*/
-?>
-
+               /* $this->breadcrumbs=array(
+                	'Peroducto',
+                );
+*/
+                /*$this->menu=array(
+                	array('label'=>'Create Imagen', 'url'=>array('create')),
+                	array('label'=>'Manage Imagen', 'url'=>array('admin')),
+                );*/
+                ?>
+	<div class="cards">
+        <?php
 
 
-<?php $this->widget('zii.widgets.CListView', array(
-    'dataProvider'=>$dataProvider,'itemView'=>'_view',));?>
+        $this->widget('zii.widgets.CListView', array(
+        		'id'=>'producto-grid',
+	            'dataProvider'=>$model->search(),
+	            'itemView'=>'_view',
+	            'ajaxUpdate'=>false,
+        	));
+        ?>
+	</div>
 </section>

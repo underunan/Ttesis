@@ -15,14 +15,9 @@
  * @property string $descripcion
  * @property string $fecha_publicacion
  * @property string $direccion
- *
- * The followings are the available model relations:
- * @property Barrio $idbarrio0
- * @property Categoria $idcategoria0
- * @property EstadoFisico $idestadoFisico
- * @property Moneda $idmoneda0
- * @property Users $idusuario0
- * @property Imagen[] $imagens
+ * @property double $latlonne
+ * @property double $latlonso
+ * @property string $imagen
  */
 class Producto extends CActiveRecord
 {
@@ -42,13 +37,14 @@ class Producto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('idusuario, idcategoria, idmoneda, idestado_fisico, idbarrio, nombre, precio, descripcion, fecha_publicacion, direccion', 'required'),
+			array('idusuario, idcategoria, idmoneda, idestado_fisico, idbarrio, nombre, precio, descripcion, fecha_publicacion, direccion, latlonne, latlonso', 'required'),
 			array('idusuario, idcategoria, idmoneda, idestado_fisico, idbarrio', 'numerical', 'integerOnly'=>true),
-			array('precio', 'numerical'),
+			array('precio, latlonne, latlonso', 'numerical'),
 			array('nombre', 'length', 'max'=>30),
+			array('imagen', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idproducto, idusuario, idcategoria, idmoneda, idestado_fisico, idbarrio, nombre, precio, descripcion, fecha_publicacion, direccion', 'safe', 'on'=>'search'),
+			array('idproducto, idusuario, idcategoria, idmoneda, idestado_fisico, idbarrio, nombre, precio, descripcion, fecha_publicacion, direccion, latlonne, latlonso, imagen', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,12 +56,11 @@ class Producto extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'idbarrio0' => array(self::BELONGS_TO, 'Barrio', 'idbarrio'),
+		    'idbarrio0' => array(self::BELONGS_TO, 'Barrio', 'idbarrio'),
 			'idcategoria0' => array(self::BELONGS_TO, 'Categoria', 'idcategoria'),
 			'idestadoFisico' => array(self::BELONGS_TO, 'EstadoFisico', 'idestado_fisico'),
 			'idmoneda0' => array(self::BELONGS_TO, 'Moneda', 'idmoneda'),
 			'idusuario0' => array(self::BELONGS_TO, 'Users', 'idusuario'),
-			'imagen' => array(self::HAS_MANY, 'Imagen', 'idproducto'),
 		);
 	}
 
@@ -86,6 +81,9 @@ class Producto extends CActiveRecord
 			'descripcion' => 'Descripcion',
 			'fecha_publicacion' => 'Fecha Publicacion',
 			'direccion' => 'Direccion',
+			'latlonne' => 'Latlonne',
+			'latlonso' => 'Latlonso',
+			'imagen' => 'Imagen',
 		);
 	}
 
@@ -118,6 +116,9 @@ class Producto extends CActiveRecord
 		$criteria->compare('descripcion',$this->descripcion,true);
 		$criteria->compare('fecha_publicacion',$this->fecha_publicacion,true);
 		$criteria->compare('direccion',$this->direccion,true);
+		$criteria->compare('latlonne',$this->latlonne);
+		$criteria->compare('latlonso',$this->latlonso);
+		$criteria->compare('imagen',$this->imagen,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

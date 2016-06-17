@@ -16,7 +16,7 @@ return array(
 	'import'=>array(
 		'application.models.*',
         'application.components.*',
-	'application.modules.user.*',
+	    'application.modules.user.*',
         'application.modules.user.models.*',
         'application.modules.user.components.*',
 	),
@@ -27,7 +27,7 @@ return array(
             # encrypting method (php hash function)
             'hash' => 'md5',
 
-            # send activation email
+            # send activation email> Usado por lo general para validar la cuenta de usuarios via email y para recuperar la contrase;a cuando sea necesario, por defecto en false.
             'sendActivationMail' => false,
 
             # allow access for non-activated users
@@ -36,7 +36,7 @@ return array(
             # activate user on registration (only sendActivationMail = false)
             'activeAfterRegister' => true,
 
-            # automatically login from registration
+            # automatically login from registration> Despues de registrarse automaticamente el usuario accede a su cuenta
             'autoLogin' => true,
 
             # registration path
@@ -54,7 +54,8 @@ return array(
             # page after logout
             'returnLogoutUrl' => array('/user/login'),
         ),
-		// uncomment the following to enable the Gii tool
+
+        	// uncomment the following to enable the Gii tool
 
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
@@ -69,21 +70,26 @@ return array(
 	// application components
 	'components'=>array(
 		// uncomment the following to enable URLs in path-format
-/*
+
 		'urlManager'=>array(
-			'urlFormat'=>'path',
+		////
+		    //'urlFormat'=>'path',
+			'showScriptName'=>false,
+			'urlSuffix'=>'.aspx',
+		    'caseSensitive'=>false,
 			'rules'=>array(
 
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
-
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
-		),*/
+		),
 
 		// database settings are configured in database.php
 		'db'=>require(dirname(__FILE__).'/database.php'),
+        //Llama directamente al archivo database.php en donde esta la cadena de coneccio a la db de la applicacion.applicacion
 
+        //User array queda inutilizado despues de la integracion de Yii User module
 		'user'=>array(
 			// enable cookie-based authentication
 			'class' => 'WebUser',

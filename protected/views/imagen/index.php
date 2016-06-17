@@ -4,19 +4,41 @@
 
 		<form class="formulario">
 
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Lugar a buscar" href="#">
-			</div>
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Producto a buscar">
-			</div>
-			<div class="input-group">
-				<butto class="bnt btn-danger btn-lg" id="bntBuscar">Buscar</button>
-			</div>
+		    <?php $form=$this->beginWidget('CActiveForm', array(
+            	'action'=>Yii::app()->createUrl($this->route),
+            	'method'=>'get',
+            )); ?>
+
+    			<div class="input-group">
+    				<input type="text" class="form-control" placeholder="Lugar a buscar" href="#">
+    			</div>
+
+            	<div class="input-group">
+            		<?php echo $form->textField($model,'idproducto',array('class'=>'form-control', 'placeholder'=>'Producto a buscar','id'=>'PALABRA_BUSQUEDA' )); ?>
+            	</div>
+
+            	<div class="input-group">
+            		<?php echo CHtml::submitButton('Buscar', array('class'=>'bnt btn-danger btn-lg', 'id'=>'bntBuscar')); ?>
+            	</div>
+
+            <?php $this->endWidget(); ?>
+
+
 
 		</form>
 	</section>
-		<section class="container informacion">
+
+
+
+<div class="wide form">
+
+
+
+</div><!-- search-form -->
+
+
+
+				<section class="container informacion">
 			<div class="row">
 			<article class="col-md-4 col-lg-4">
 				<span class="icon-brujula"></span>
@@ -65,8 +87,9 @@
                 ?>
 	<div class="cards">
         <?php $this->widget('zii.widgets.CListView', array(
-        	'dataProvider'=>$dataProvider,
-        	'itemView'=>'_view',
+        		'id'=>'imagen-grid',
+	            'dataProvider'=>$model->search(),
+	            'itemView'=>'_view',
         	));
         ?>
 	</div>

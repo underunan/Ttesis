@@ -30,6 +30,7 @@
 
 
 
+
 		<?php
 		$profileFields=$profile->getFields();
 		if ($profileFields) {
@@ -43,9 +44,22 @@
                     		} elseif ($field->range) {
                     			echo $form->dropDownList($profile,$field->varname,Profile::range($field->range));
                     		} elseif ($field->field_type=="TEXT") {
-                    			echo $form->textArea($profile,$field->varname,array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'Nombre *'));
+                    		    echo $form->textArea($profile,$field->varname,array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'placeholder'=>'Nombre *'));
                     		} else {
-                    			echo $form->textField($profile,$field->varname,array('class'=>'form-control','size'=>50,'maxlength'=>(($field->field_size)?$field->field_size:255)));
+
+                                 if($field->title=="Linea Telefonica"){
+
+            echo "
+            <input type=\"radio\" onClick=\"up1()\" name=\"gender\" value=\"movistar\" id=\"l1\"> movistar
+            <input type=\"radio\" onClick=\"up2()\" name=\"gender\" value=\"claro\" id=\"l2\" checked=\"checked\"> claro<br>";
+
+
+                                     echo $form->hiddenField($profile,$field->varname,array('class'=>'form-control','size'=>50,'maxlength'=>(($field->field_size)?$field->field_size:255)));
+                		        }else{
+                		            echo $form->textField($profile,$field->varname,array('class'=>'form-control','size'=>50,'maxlength'=>(($field->field_size)?$field->field_size:255)));
+                    		    }
+
+
                     		}
                     		 ?>
 						<?php echo $form->error($profile,$field->varname,array('class'=>'text-danger text-center')); ?>
@@ -90,3 +104,8 @@
 </div>
 
 <?php $this->endWidget(); ?>
+
+<script language='javascript'>
+function up1(){var le1 = document.getElementById("l1").value;document.getElementById("Profile_linea").value = le1;}
+function up2(){var le1 = document.getElementById("l2").value;document.getElementById("Profile_linea").value = le1;}
+				</script>

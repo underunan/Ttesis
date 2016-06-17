@@ -16,7 +16,8 @@
 	    ),
 	)); ?>
 
-	<?php echo $form->errorSummary($model, $model_imagen); ?>
+	<?php echo $form->errorSummary($model); ?>
+
 
 
 <div class="panel-body">
@@ -61,7 +62,7 @@
 
 	<div class="form-group">
         <?php echo $form->labelEx($model,'Nombre'); ?>
-		<?php echo $form->textField($model,'nombre',array('size'=>30,'maxlength'=>30,'class'=>'form-control')); ?>
+        <?php echo $form->textField($model,'nombre',array('size'=>30,'maxlength'=>30,'class'=>'form-control' ,'style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();')); ?>
 		<?php echo $form->error($model,'nombre', array('class'=>'alert alert-danger')); ?>
 	</div>
 
@@ -76,6 +77,16 @@
 		<?php echo $form->textField($model,'descripcion',array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'descripcion',array('class'=>'alert alert-danger')); ?>
 	</div>
+
+    <div>
+        <?php echo $form->labelEx($model,'Especificar localizacion'); ?>
+
+    	<?php echo $form->textField($model,'latlonne' ,array('class'=>'form-control', 'placeholder'=>'Latitud Norte *')); ?>
+        <?php echo $form->error($model,'latlonne'); ?>
+
+        <?php echo $form->textField($model,'latlonso' ,array('class'=>'form-control', 'placeholder'=>'Longitud Sur *')); ?>
+        <?php echo $form->error($model,'latlonso'); ?>
+    </div>
 
 	<div class="form-group">
         <?php //echo $form->labelEx($model,'fecha_publicacion'); ?>
@@ -93,10 +104,10 @@
 
 
 	<div>
-	<?php echo $form->labelEx($model,'Imagen'); ?>
+	<?php echo $form->labelEx($model,'imagen'); ?>
 	<input type="file" id="filePicker">
-    <?php echo $form->hiddenField($model_imagen,'imagen'); ?>
-    <?php echo $form->error($model_imagen,'imagen'); ?>
+    <?php echo $form->hiddenField($model,'imagen'); ?>
+    <?php echo $form->error($model,'imagen'); ?>
      <script>
                                                             var handleFileSelect = function(evt) {
                                                                 var files = evt.target.files;
@@ -105,7 +116,7 @@
                                                                     var reader = new FileReader();
                                                                     reader.onload = function(readerEvt) {
                                                                         var binaryString = readerEvt.target.result;
-                                                                        document.getElementById("Imagen_imagen").value = btoa(binaryString);
+                                                                        document.getElementById("Producto_imagen").value = btoa(binaryString);
                                                                     };
                                                                     reader.readAsBinaryString(file);
                                                                 }
@@ -113,14 +124,14 @@
                                                             if (window.File && window.FileReader && window.FileList && window.Blob) {
                                                                 document.getElementById('filePicker').addEventListener('change', handleFileSelect, false);
                                                             } else {
-                                                                alert('The File APIs are not fully supported in this browser.');
+                                                                alert('TIPO DE ARCHIVO NO SOPORTADO');
                                                             }
     </script>
 	</div>
 
     <p class="form-group">
     <div class="col-sm-4 hidden-xs"></div>
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Guardar',array('class'=>'btn btn-success btn-lg col-sm-4 col-xs-12')); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar',array('class'=>'btn btn-success btn-lg col-sm-4 col-xs-12')); ?>
 		 <div class="col-sm-4 hidden-xs"></div>
 		</p>
     </div>

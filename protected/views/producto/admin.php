@@ -1,16 +1,15 @@
-<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php
-/* @var $this ProductoController */
-/* @var $model Producto */
+/* @var $this Producto2Controller */
+/* @var $model Producto2 */
 
 $this->breadcrumbs=array(
-	'Productos'=>array('index'),
+	'Producto2s'=>array('index'),
 	'Manage',
 );
 
 $this->menu=array(
-	array('label'=>'List Producto', 'url'=>array('index')),
-	array('label'=>'Create Producto', 'url'=>array('create')),
+	array('label'=>'List Producto2', 'url'=>array('index')),
+	array('label'=>'Create Producto2', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -19,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#producto-grid').yiiGridView('update', {
+	$('#producto2-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -27,12 +26,12 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Productos</h1>
+<h1>Administrar Productos</h1>
 
-<p>
+<!--p>
 You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
 or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
+</p-->
 
 <?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
 <div class="search-form" style="display:none">
@@ -41,11 +40,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('booster.widgets.TbGridView', array(
-	'id'=>'producto-grid',
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'producto2-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
-	'type'=>'striped',
 	'columns'=>array(
 		/*'idproducto',
 		'idusuario',
@@ -53,24 +51,15 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'idmoneda',
 		'idestado_fisico',
 		'idbarrio',
-		*/
+*/
 		'nombre',
 		'precio',
 		'descripcion',
 		'fecha_publicacion',
 		'direccion',
+
 		array(
-			'htmlOptions'=>array('nowrap'=>'nowrap'),
-			'class'=>'booster.widgets.TbButtonColumn',
-			'template'=>'{update}{delete}',
-			'buttons'=>array(
-                    'update' => array(
-                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Actualizar')),
-            ),
-            'delete' => array(
-                'options' => array('rel' => 'tooltip', 'data-toggle' => 'tooltip', 'title' => Yii::t('app', 'Eliminar')),
-            )
-			    )
-		)
+			'class'=>'CButtonColumn',
+		),
 	),
 )); ?>

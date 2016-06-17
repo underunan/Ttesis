@@ -15,19 +15,33 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
+		<form class="form-horizontal formulario-horizontal">
+                    		<div class="form-group form-group">
+                    					<div class="col-xs-12">
+                    						<div class="input-group">
+                    							<div class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'estado_fisico'); ?>
-		<?php echo $form->textField($model,'estado_fisico'); ?>
+		<?php echo $form->textField($model,'estado_fisico', array('class'=>'form-control', 'placeholder'=>'nombre *'),array('size'=>35,'maxlength'=>35)); ?>
 		<?php echo $form->error($model,'estado_fisico'); ?>
 	</div>
 
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+
+                    					</div>
+                    		           </div>
+                            </div>
+                    			<div class="col-sm-4">
+
+		    <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar' , array('class'=>'btn btn-success btn-lg')); ?>
+
+	        </div>
+        </form>
+
+
 
 <?php $this->endWidget(); ?>
 

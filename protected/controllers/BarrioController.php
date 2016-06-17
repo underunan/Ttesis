@@ -126,6 +126,7 @@ class BarrioController extends Controller
 		//$this->render('index',array('dataProvider'=>$dataProvider,));
 
         $model = Barrio::model()->findAll();
+        //SELECT * FROM "Producto" ORDER BY "idproducto" desc
 
 			$this->render('index',array('dataProvider'=>$dataProvider,'model'=>$model,));
 	}

@@ -1,26 +1,21 @@
-<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 <?php
-/* @var $this ProductoController */
-/* @var $model Producto */
+/* @var $this Producto2Controller */
+/* @var $model Producto2 */
 
 $this->breadcrumbs=array(
-	'Productos'=>array('index'),
+	'Producto2s'=>array('index'),
 	$model->idproducto=>array('view','id'=>$model->idproducto),
 	'Update',
 );
 
 $this->menu=array(
-	array('label'=>'List Producto', 'url'=>array('index')),
-	array('label'=>'Create Producto', 'url'=>array('create')),
-	array('label'=>'View Producto', 'url'=>array('view', 'id'=>$model->idproducto)),
-	array('label'=>'Manage Producto', 'url'=>array('admin')),
+	array('label'=>'List Producto2', 'url'=>array('index')),
+	array('label'=>'Create Producto2', 'url'=>array('create')),
+	array('label'=>'View Producto2', 'url'=>array('view', 'id'=>$model->idproducto)),
+	array('label'=>'Manage Producto2', 'url'=>array('admin')),
 );
 ?>
 
-<div class="panel panel-default info-usuario update">
-  <div class="panel-heading">
-        <h4 class="text-center"><i class="glyphicon glyphicon-edit pull-left" style="color: #428bca; font-size:30px;"></i> Editar producto <a href="?r=producto/admin" class="btn btn-danger pull-right"><i class="glyphicon glyphicon-tasks"></i> Gestiónar productos</a></h4>
-  </div>
+<h1>Update Producto2 <?php echo $model->idproducto; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>
-</div>

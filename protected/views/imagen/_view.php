@@ -10,7 +10,8 @@
 								<h4><span class="label label-primary pull-left"><span class="glyphicon glyphicon-eye-open"></span> <?php echo $estado?></span></h4>
 								<img src="data:image/jpeg;base64,<?php echo CHtml::encode($data->imagen,array('class'=>"img-responsive img-thumbnail")); ?>" alt="zapatos">
 								<div class="caption">
-									<h3 class="text-center"><?php echo CHtml::encode($data->idproducto0->nombre); ?></h3>
+									<h3 class="text-center">
+									<?php echo CHtml::encode($data->idproducto0->nombre); ?></h3>
 									<?php $idmoneda = CHtml::encode($data->idproducto0->idmoneda); $moneda = 'nan';
                 if($idmoneda == 2){$moneda = 'U$';}else{$moneda = 'C$';} ?>
 									<span class="glyphicon glyphicon-tags">

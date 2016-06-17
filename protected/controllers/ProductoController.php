@@ -78,7 +78,7 @@ class ProductoController extends Controller
 		));
 	}*/
 
-	public function actionCreate()
+/*	public function actionCreate()
 	{
 		$model=new Producto;
 		$model_imagen=new Imagen;
@@ -106,16 +106,10 @@ class ProductoController extends Controller
 			'model_imagen'=>$model_imagen,
 		));
 	}
-
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
+*/
+	public function actionCreate()
 	{
-		$model=$this->loadModel($id);
+		$model=new Producto;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
@@ -127,9 +121,50 @@ class ProductoController extends Controller
 				$this->redirect(array('view','id'=>$model->idproducto));
 		}
 
-		$this->render('update',array(
+		$this->render('create',array(
 			'model'=>$model,
 		));
+	}
+
+
+	/**
+	 * Updates a particular model.
+	 * If update is successful, the browser will be redirected to the 'view' page.
+	 * @param integer $id the ID of the model to be updated
+	 */
+	public function actionUpdate($id)
+	{
+		$model=$this->loadModel($id);
+		$model_imagen=new Imagen;
+
+		if(isset($_POST['Producto'], $_POST['Imagen']))
+		{
+			$model->attributes=$_POST['Producto'];
+			$model_imagen->attributes=$_POST['Imagen'];
+
+            $model_imagen->idproducto = $id;
+            $valid = $model->validate();
+			$valid = $model_imagen->validate() && $valid;
+
+	        if($valid){
+			    if($model->save(false))
+			    $model_imagen->idproducto = $model->idproducto;
+			    if($model_imagen->save(false)){
+				$this->redirect(array('view','id'=>$model->idproducto));
+		            }
+		        }
+	        }
+
+		$this->render('create',array(
+			'model'=>$model,
+			'model_imagen'=>$model_imagen,
+		));/*		if($model->save())
+				$this->redirect(array('view','id'=>$model->idproducto));
+		}
+
+		$this->render('update',array(
+			'model'=>$model,
+		));*/
 	}
 
 	/**
@@ -151,12 +186,16 @@ class ProductoController extends Controller
 	 */
 	public function actionIndex()
 	{
-        //$model_imagen = $model_imagen->loadModel
-		$dataProvider=new CActiveDataProvider('Producto');
-		 $model = Imagen::model()->findAll();
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-			'model_imagen'=>$model,
+	    $dataProvider = Producto::model()->findAll(array('order'=>'idproducto DESC'));
+        $dataProvider = new CActiveDataProvider('Producto');
+        $model=new Producto('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Producto']))
+
+
+			$model->attributes=$_GET['Producto'];
+        	$this->render('index',array(
+			'model'=>$model,'dataProvider'=>$dataProvider,
 		));
 	}
 

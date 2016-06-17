@@ -1,11 +1,10 @@
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/normalize.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fonts/icommon-free/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
 
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/normalize.css">
-        	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
-        	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fonts/icommon-free/style.css">
-        	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
-        	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
-
-        		<style type="text/css">
+<style type="text/css">
 		body {
 		background: #cccccc;
 		}
@@ -38,68 +37,50 @@
 			border: 2px solid #666666;
 			border-radius: 6px;
 		}
-	</style>
+</style>
 
-        <div>
-        	<div class="jumbotron">
-        		<div class="container">
-        			<h1><?php echo UserModule::t("BARRIOS");?></h1>
+<div>
+	<div class="jumbotron">
+		<div class="container">
+        	<h1><?php echo UserModule::t("BARRIOS");?></h1>
         		<div class="panel panel-info col-xs-12 col-sm-offset-0">
         		<div class="panel-heading text-center"><h4>Barrios</h4></div>
         		  <div class="panel-body">
 
         		  <?php /*******************CONTENIDO*******************/ ?>
-
-
-
         <?php
-/* @var $this BarrioController */
-/* @var $dataProvider CActiveDataProvider */
-
-$this->breadcrumbs=array(
-	'Barrios',
-);
-
-$this->menu=array(
-	array('label'=>'Create Barrio', 'url'=>array('create')),
-	array('label'=>'Manage Barrio', 'url'=>array('admin')),
-);
-?>
+            $this->breadcrumbs=array('Barrios',);
+            $this->menu=array(
+            	array('label'=>'Create Barrio', 'url'=>array('create')),
+            	array('label'=>'Manage Barrio', 'url'=>array('admin')),
+            );
+        ?>
 
 
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
+        <?php $this->widget('zii.widgets.CListView', array(
+        	'dataProvider'=>$dataProvider,
 
-	'itemView'=>'_view',
-)); ?>
+        	'itemView'=>'_view',
+        )); ?>
 
-  </div>
+                    </div>
         	    </div>
 	        </div>
         </div>
+    </div>
+
+    <div class="jumbotron">
+    	<div id='googleMap'></div>
+
+    	<div class="row">
+          <div id="respuesta">
           </div>
+    	</div>
 
-<div class="jumbotron">
-	<?php/*
-		$lat = "12.419682877577497";
-    	$lng = "-86.87478992462161";
-    	$pos = "42.822410654302125,-1.6459033203125273";*/
-	 ?>
-	<!--div id='info'><?php /*echo $pos;*/ ?></div-->
-	<div id='googleMap'></div>
-	<!--div class="row">
-		<button type="submit" id='enviar' class='btn btn-danger col-sm-3 col-sm-offset-1'>Guardar</button>
-		<a href="<?php echo Yii::app()->request->baseUrl;?>?r=/site/rutas" class="btn btn-warning col-sm-3 col-sm-offset-1">Mostrar puntos</a>
-	</div-->
-	<div class="row">
-      <div id="respuesta">
-      </div>
-	</div>
+    </div>
 
-</div>
-
-		  <?php
+	<?php
   	#sacamos los datos del modelo del controlador SiteController
 	$data = array();
 	foreach ($model as $dato) {

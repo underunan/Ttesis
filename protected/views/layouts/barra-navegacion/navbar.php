@@ -80,12 +80,13 @@
                         		 ?>
 
                         	<ul class="nav nav-pills nav-stacked" aria-labelledby="dLabel">
-				   		 		<li class=""><a href="#"><span class="icon icon-display pull-right"></span> Eléctronico</a></li>
-				   		 		<li class=""><a href="#"><span class="icon icon-woman pull-right"></span> Ropa</a></li>
-				   		 		<li class=""><a href="#"> <span class="icon icon-plus pull-right"></span> Otros</a></li>
+				   		 		<li class=""><a href="?r=producto%2Findex&Producto%5Bidcategoria%5D=2&yt0=Buscar"><span class="icon icon-display pull-right"></span> Eléctronico</a></li>
+				   		 		<li class=""><a href="?r=producto%2Findex&Producto%5Bidcategoria%5D=3&yt0=Buscar"><span class="icon icon-woman pull-right"></span> Ropa para Damas</a></li>
+				   		 		<li class=""><a href="?r=producto%2Findex&Producto%5Bidcategoria%5D=4&yt0=Buscar"> <span class="icon icon-plus pull-right"></span> Ropa de caballeros</a></li>
+				   		 		<li class=""><a href="?r=producto%2Findex&Producto%5Bidcategoria%5D=6&yt0=Buscar"> <span class="icon icon-plus pull-right"></span> Vehiculos</a></li>
 								<?php
 								if(!Yii::app()->user->isGuest){ ?>
-								<li class=""><a href="?r=producto/create"><span class="icon icon-plus pull-right"></span>Agregar</a></li>
+								<li class=""><a href="?r=producto/create"><span class="icon icon-plus pull-right"></span>Agregar un producto</a></li>
 								<?php } ?>
 				   		 	</ul>
 

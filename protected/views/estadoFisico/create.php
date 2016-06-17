@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create EstadoFisico</h1>
+<h1>Agregar EstadoFisico</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

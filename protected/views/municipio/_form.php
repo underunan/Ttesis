@@ -5,7 +5,7 @@
 ?>
 
 
- 
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -17,39 +17,38 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Los espacios con <span class="required">*</span> son requeridos.</p>
+	<p class="note">Los campos con <span class="required">*</span> son requeridos.</p>
 
 	<?php echo $form->errorSummary($model); ?>
-	
+
 		<form class="form-horizontal formulario-horizontal">
 		<div class="form-group form-group">
 					<div class="col-xs-12">
 						<div class="input-group">
 							<div class="input-group-addon"><span class="glyphicon glyphicon-pencil"></span></div>
-                        	
+
                     		<?php echo $form->textField($model,'nombre',array('class'=>'form-control', 'placeholder'=>'Nombre del municipio *'),array('size'=>30,'maxlength'=>30)); ?>
                     		<?php echo $form->error($model,'nombre'); ?>
-                    		
-                    		
+
+
                     		<?php echo $form->textField($model,'latlonne' ,array('class'=>'form-control', 'placeholder'=>'Latitud Norte *')); ?>
                     		<?php echo $form->error($model,'latlonne'); ?>
-                    		
-                    		
+
                     		<?php echo $form->textField($model,'latlonso' ,array('class'=>'form-control', 'placeholder'=>'Longitud Sur *')); ?>
                     		<?php echo $form->error($model,'latlonso'); ?>
-                        	
+
 						</div>
 					</div>
 		</div>
-		
+
 		    <div class="col-sm-4">
 
-		    <?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Guardar' , array('class'=>'btn btn-success btn-lg')); ?>
-		
+		    <?php echo CHtml::submitButton($model->isNewRecord ? 'Guardar' : 'Guardar' , array('class'=>'btn btn-success btn-lg')); ?>
+
 	        </div>
-	  
-	
-		
+
+
+
 
 
 	</form>

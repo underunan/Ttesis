@@ -1,10 +1,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fonts/icommon-free/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
-	
-		<style type="text/css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fonts/icommon-free/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css">
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/style_registro.css">
+
+<style type="text/css">
 		body {
 		background: #cccccc;
 		}
@@ -25,20 +25,20 @@
 		}
 		#googleMap {
 			margin: 10px auto;
-			border: 2px solid #666666; 
+			border: 2px solid #666666;
 			border-radius: 6px;
-			width:90%; 
+			width:90%;
 			height:250px;
 		}
 		#map {
 			margin: 10px auto;
 			width:100%;
 			height:280px;
-			border: 2px solid #666666; 
+			border: 2px solid #666666;
 			border-radius: 6px;
 		}
-	</style>
-	
+</style>
+
 <div>
 	<div class="jumbotron">
 		<div class="container">
@@ -46,7 +46,7 @@
 		<div class="panel panel-info col-xs-12 col-sm-6">
 		<div class="panel-heading text-center"><h4>municipios</h4></div>
 		  <div class="panel-body">
-		  
+
 	<?php
 /* @var $this MunicipioController */
 /* @var $model Municipio */
@@ -85,4 +85,3 @@ $this->menu=array(
 		  </div>
 		  </div>
 		  </div>
-		  
