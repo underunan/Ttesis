@@ -16,12 +16,19 @@
     			</div-->
 
             	<div class="input-group">
-            		<?php echo $form->textField($model,'nombre',array('class'=>'form-control', 'size'=>50, 'placeholder'=>'Producto a buscar','id'=>'PALABRA_BUSQUEDA','style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();' )); ?>
+            	<?php echo $form->dropDownList($model,'idbarrio',
+		CHtml::listData(Barrio::model()->findAll(array('order' => 'idbarrio')),'idbarrio','nombre'),array('class'=>'form-control', 'placeholder'=>'', 'id'=>'LUGAR_BUSQUEDA'));?>
+                </div>
+                <div class="input-group">
+            		<?php echo $form->textField($model,'nombre',array('class'=>'form-control', 'placeholder'=>'Producto a buscar','id'=>'PALABRA_BUSQUEDA','style'=>'text-transform:uppercase;', 'onkeyup'=>'javascript:this.value=this.value.toUpperCase();' )); ?>
             	</div>
 
-            	<div class="input-group">
-            		<?php echo CHtml::submitButton('Buscar', array('class'=>'bnt btn-danger btn-lg', 'id'=>'bntBuscar')); ?>
-            	</div>
+
+            		<?php /*echo CHtml::submitButton('Buscar', array('class'=>'bnt btn-danger btn-lg', 'id'=>'bntBusca'));*/ ?>
+    		<div class="input-group">
+				<a class="bnt btn-danger btn-lg" id="bntBuscar" href="javascript:openPage()">Buscar</a>
+			</div>
+
 
  <?php $this->endWidget(); ?>
 
@@ -100,3 +107,10 @@
         ?>
 	</div>
 </section>
+
+<script language="javascript">
+openPage = function(){
+var scrt_var1 = document.getElementById("PALABRA_BUSQUEDA").value;
+var scrt_var2 = document.getElementById("LUGAR_BUSQUEDA").value;
+location.href = "index.php?r=producto2%2Findex&Producto%5Bidbarrio%5D="+scrt_var2+"&articulo=&Producto%5Bnombre%5D="+scrt_var1+"&Producto%5Bidestado_fisico%5D=&Producto%5Bidmoneda%5D=";}
+</script>

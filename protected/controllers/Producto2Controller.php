@@ -45,50 +45,44 @@ class Producto2Controller extends Controller
 		);
 	}
 
-	/**
-	 * Displays a particular model.
-	 * @param integer $id the ID of the model to be displayed
-	 */
-	public function actionView($id)
-	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
-	}
-
-	/**
-	 * Deletes a particular model.
-	 * If deletion is successful, the browser will be redirected to the 'admin' page.
-	 * @param integer $id the ID of the model to be deleted
-	 */
-
-	/**
-	 * Lists all models.
-	 */
 	public function actionIndex()
 	{
-
-        $dataProvider = new CActiveDataProvider('Producto');
-      $model=new Producto('search');
-	  $model->unsetAttributes();  // clear any default values
-        $model2 = new Producto('search' );
-	    $model2 = Producto::model()->findAll();
-		if(isset($_GET['Producto']))
-
-			$model->attributes=$_GET['Producto'];
-        	$this->render('index',array(
-		    'model2'=>$model2, 'model'=>$model,'dataProvider'=>$dataProvider,
-		));
+      $dataProvider = new CActiveDataProvider('Producto');
+      $model=new Producto();
+		if(isset($_GET['Producto'])){
+           // $model->attributes = $_GET['Producto'];
+        $this->loadProducto($model,
+            $_GET['Producto']['idestado_fisico'],
+            $_GET['Producto']['idmoneda'],
+            $_GET['Producto']['nombre'],
+            $_GET['Producto']['idbarrio']);		}
+        else{
+            $this->loadAllProducto($model);
+        }
 	}
 
+    public function loadProducto($model,$id, $id2, $id3, $id4){
+        try{
+            $producto1=Producto::model()->findAll($this->Msearch($model, $id, $id2, $id3, $id4));
+            $this->render('index',array(
+    		    'model'=>$model,
+    		    'model2'=>$producto1,
+    		));
+        }
+        catch(exception $e){
+            $this->loadAllProducto($model);
+        }
+    }
 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer $id the ID of the model to be loaded
-	 * @return Producto the loaded model
-	 * @throws CHttpException
-	 */
+    public function loadAllProducto($model){
+    	    $producto1=Producto::model()->findAll();
+            $this->render('index',array(
+    		    'model'=>$model,
+    		    'model2'=>$producto1,
+    		));
+     }
+
+
 	public function loadModel($id)
 	{
 		$model=Producto::model()->findByPk($id);
@@ -97,10 +91,6 @@ class Producto2Controller extends Controller
 		return $model;
 	}
 
-	/**
-	 * Performs the AJAX validation.
-	 * @param Producto $model the model to be validated
-	 */
 	protected function performAjaxValidation($model)
 	{
 		if(isset($_POST['ajax']) && $_POST['ajax']==='producto-form')
@@ -109,4 +99,73 @@ class Producto2Controller extends Controller
 			Yii::app()->end();
 		}
 	}
+
+
+    public function Msearch($model, $id, $id2, $id3, $id4)
+    {
+        $criteria = new CDbCriteria();
+
+	    if($id and $id2 and $id3 and $id4){
+	        $criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and nombre ~*:nombre and idbarrio=:idbarrio";
+	        $criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':nombre'=> $id3, ':idbarrio'=> $id4);	}
+
+
+	    elseif($id and $id2 and $id3){
+	        $criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and nombre ~*:nombre";
+	        $criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':nombre'=> $id3);	    }
+	    elseif($id and $id3 and $id4){
+	        $criteria->condition = "idestado_fisico = :idestado_fisico and nombre ~*:nombre and idbarrio=:idbarrio";
+	        $criteria->params = array(':idestado_fisico' => $id, ':nombre'=> $id3,':idbarrio' => $id4, );	    }
+	    elseif($id and $id2 and $id4){
+	        $criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda=:idmoneda and idbarrio=:idbarrio";
+	        $criteria->params = array(':idestado_fisico' => $id, ':idmoneda'=> $id2,':idbarrio' => $id4, );	    }
+	    elseif($id2 and $id3 and $id4){
+	        $criteria->condition = "idmoneda = :idmoneda and nombre ~*:nombre and idbarrio=:idbarrio";
+	        $criteria->params = array(':idmoneda' => $id2, ':nombre'=> $id3, ':idbarrio'=> $id4);				}
+
+
+	    elseif($id and $id2){
+	        $criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda";
+	        $criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2);	}
+	    elseif($id and $id3){
+	        $criteria->condition = "idestado_fisico = :idestado_fisico and nombre ~*:nombre";
+	        $criteria->params = array(':idestado_fisico' => $id, ':nombre'=> $id3);	    }
+	    elseif($id and $id4){
+	        $criteria->condition = "idestado_fisico = :idestado_fisico and idbarrio=:idbarrio";
+	        $criteria->params = array(':idestado_fisico' => $id, ':idbarrio'=> $id4);	}
+
+
+	    elseif($id2 and $id3){
+	        $criteria->condition = "idmoneda = :idmoneda and nombre ~*:nombre";
+	        $criteria->params = array(':idmoneda' => $id2, ':nombre'=> $id3);	}
+	    elseif($id2 and $id4){
+	        $criteria->condition = "idmoneda = :idmoneda and idbarrio=:idbarrio";
+	        $criteria->params = array(':idmoneda' => $id2, ':idbarrio'=> $id4);	}
+	    elseif($id3 and $id4){
+	        $criteria->condition = "nombre ~*:nombre and idbarrio=:idbarrio";
+	        $criteria->params = array(':nombre'=> $id3,':idbarrio' => $id4 );	}
+
+
+	    elseif($id){
+	        $criteria->condition = "idestado_fisico = :idestado_fisico";
+	        $criteria->params = array(':idestado_fisico' => $id);	}
+	    elseif($id2){
+	        $criteria->condition = "idmoneda = :idmoneda";
+	        $criteria->params = array(':idmoneda' => $id2);	    }
+	    elseif($id3){
+	        $criteria->condition = "nombre ~*:nombre";
+	        $criteria->params = array(':nombre'=> $id3);	    }
+	    elseif($id4){
+	        $criteria->condition = "idbarrio = :idbarrio";
+	        $criteria->params = array(':idbarrio' => $id4);	    }
+
+	    else{
+            $criteria->condition = "idestado_fisico = :idestado_fisico or idmoneda = :idmoneda or nombre ~*:nombre";
+	        $criteria->params = array(':idestado_fisico' => $id ?: 0, ':idmoneda' => $id2 ?:0, ':nombre' => $id ?: 0);
+	    }
+
+	     return $criteria;
+    }
+
 }
+ 

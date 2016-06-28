@@ -21,12 +21,7 @@
 							<label for="form-group" class="col-sm-2 control-label">Lugar a buscar</label>
 							<div class="input-group col-xs-12 col-sm-6">
 								<span class="input-group-addon input-txt"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></span>
-								<!--input type="text" class="form-control input-md input-txt" placeholder="Lugar a buscar" name="lugar"-->
-
-										<?php echo $form->dropDownList($model,'idbarrio',
-		CHtml::listData(Barrio::model()->findAll(array('order' => 'idbarrio')),'idbarrio','nombre'),array('class'=>'form-control', 'value'=>''));?>
-
-
+								<input type="text" class="form-control input-md input-txt" placeholder="Lugar a buscar" name="lugar">
 							</div>
 						</div>
 

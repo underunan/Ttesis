@@ -119,6 +119,7 @@ return array(
 		),
 		'booster'=>array(
                 'class'=>'ext.YiiBooster.src.components.Booster',
+                'responsiveCss'=>true,
 		    ),
 
 	),
