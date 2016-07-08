@@ -49,24 +49,31 @@ class Producto2Controller extends Controller
 	{
       $dataProvider = new CActiveDataProvider('Producto');
       $model=new Producto();
+
 		if(isset($_GET['Producto'])){
            // $model->attributes = $_GET['Producto'];
+
         $this->loadProducto($model,
             $_GET['Producto']['idestado_fisico'],
             $_GET['Producto']['idmoneda'],
             $_GET['Producto']['nombre'],
-            $_GET['Producto']['idbarrio']);		}
+            $_GET['Producto']['idbarrio'],
+            $_GET['Producto']['precio']
+            );
+            }
         else{
             $this->loadAllProducto($model);
         }
 	}
 
-    public function loadProducto($model,$id, $id2, $id3, $id4){
+    public function loadProducto($model,$id, $id2, $id3, $id4, $id5){
         try{
-            $producto1=Producto::model()->findAll($this->Msearch($model, $id, $id2, $id3, $id4));
+
+            $producto1=Producto::model()->findAll($this->Msearch($model, $id, $id2, $id3, $id4, $id5));
             $this->render('index',array(
     		    'model'=>$model,
     		    'model2'=>$producto1,
+    		    'model3'=>$id5,
     		));
         }
         catch(exception $e){
@@ -75,13 +82,15 @@ class Producto2Controller extends Controller
     }
 
     public function loadAllProducto($model){
+           $model3 = 0;
     	    $producto1=Producto::model()->findAll();
             $this->render('index',array(
     		    'model'=>$model,
     		    'model2'=>$producto1,
+    		    'model3'=>$model3,
     		));
      }
-
+ 
 
 	public function loadModel($id)
 	{
@@ -99,7 +108,7 @@ class Producto2Controller extends Controller
 			Yii::app()->end();
 		}
 	}
-
+/*
 
     public function Msearch($model, $id, $id2, $id3, $id4)
     {
@@ -141,6 +150,7 @@ class Producto2Controller extends Controller
 	    elseif($id2 and $id4){
 	        $criteria->condition = "idmoneda = :idmoneda and idbarrio=:idbarrio";
 	        $criteria->params = array(':idmoneda' => $id2, ':idbarrio'=> $id4);	}
+
 	    elseif($id3 and $id4){
 	        $criteria->condition = "nombre ~*:nombre and idbarrio=:idbarrio";
 	        $criteria->params = array(':nombre'=> $id3,':idbarrio' => $id4 );	}
@@ -166,6 +176,137 @@ class Producto2Controller extends Controller
 
 	     return $criteria;
     }
+*/
 
+
+public function Msearch($model, $id, $id2, $id3, $id4, $precio)
+    {
+    	$criteria = new CDbCriteria();
+
+    	if($precio)
+    		{$stprecio = "precio<=:precio";}
+    	//elseif($precio < 2000)
+    		//{$stprecio = "precio <:precio";}
+
+
+
+    	if($id and $id2 and $id3 and $id4 and $precio)
+    	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and nombre ~*:nombre and idbarrio=:idbarrio and ". $stprecio;
+	$criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':nombre'=> $id3, ':idbarrio'=> $id4, ':precio'=> $precio);
+    	}
+
+    elseif($id and $id2 and $id3 and $id4)   	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and nombre ~*:nombre and idbarrio=:idbarrio";
+	$criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':nombre'=> $id3, ':idbarrio'=> $id4);    	}
+    elseif($id and $id2 and $id3 and $precio)	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and nombre ~*:nombre and ".$stprecio;
+	$criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':nombre'=> $id3, ':precio'=> $precio);      	}
+    elseif($id and $id2 and $id4 and $precio)  	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and idbarrio=:idbarrio and ". $stprecio;
+	$criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':idbarrio'=> $id4, ':precio'=> $precio);    	}
+    elseif($id and $id3 and $id4 and $precio)  	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and nombre ~*:nombre and idbarrio=:idbarrioand ". $stprecio;
+	$criteria->params = array(':idestado_fisico' => $id, ':nombre' => $id3, ':idbarrio'=> $id4, ':precio'=> $precio);      	}
+    elseif($id2 and $id3 and $id4 and $precio) 	{
+  	$criteria->condition = "idmoneda = :idmoneda and nombre ~*:nombre and idbarrio=:idbarrio and ". $stprecio;
+	$criteria->params = array(':idmoneda' => $id2, ':nombre'=> $id3, ':idbarrio'=> $id4, ':precio'=> $precio);		    	}
+
+
+
+	elseif($id and $id2 and $id3)   	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and nombre ~*:nombre";
+	$criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':nombre'=> $id3);    	}
+	elseif($id and $id2 and $id4)   	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and idbarrio =:idbarrio";
+	$criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':idbarrio'=> $id4);    	}
+	elseif($id and $id2 and $precio)   	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and ". $stprecio;
+	$criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2, ':precio'=> $precio);    	}
+
+ 	elseif($id and $id3 and $id4)  	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and nombre ~*:nombre and idbarrio=:idbarrio";
+	$criteria->params = array(':idestado_fisico' => $id, ':nombre' => $id3, ':idbarrio'=> $id4);      	}
+	elseif($id and $id3 and $precio)  	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and nombre ~*:nombre and ". $stprecio;
+	$criteria->params = array(':idestado_fisico' => $id, ':nombre' => $id3, ':precio'=> $precio);      	}
+
+	elseif($id and $id4 and $precio)  	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and idbarrio=:idbarrioand ". $stprecio;
+	$criteria->params = array(':idestado_fisico' => $id,':idbarrio'=> $id4, ':precio'=> $precio);      	}
+
+	elseif($id2 and $id3 and $id4)   	{
+  	$criteria->condition = "idmoneda = :idmoneda and nombre ~*:nombre and idbarrio=:idbarrio";
+	$criteria->params = array(':idmoneda' => $id2, ':nombre'=> $id3, ':idbarrio'=> $id4);    			}
+    elseif($id2 and $id3 and $precio)	{
+  	$criteria->condition = "idmoneda = :idmoneda and nombre ~*:nombre and ".$stprecio;
+	$criteria->params = array(':idmoneda' => $id2, ':nombre'=> $id3, ':precio'=> $precio);      		}
+
+	elseif($id3 and $id4 and $precio) 	{
+  	$criteria->condition = "nombre ~*:nombre and idbarrio=:idbarrio and ". $stprecio;
+	$criteria->params = array(':nombre'=> $id3, ':idbarrio'=> $id4, ':precio'=> $precio);		    	}
+
+	elseif($id3 and $id4 and $precio) 	{
+  	$criteria->condition = "nombre ~*:nombre and idbarrio=:idbarrio and ". $stprecio;
+	$criteria->params = array(':nombre'=> $id3, ':idbarrio'=> $id4, ':precio'=> $precio);		    	}
+
+
+
+	elseif($id and $id2){
+	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda";
+	$criteria->params = array(':idestado_fisico' => $id, ':idmoneda' => $id2);		}
+	elseif($id and $id3){
+	$criteria->condition = "idestado_fisico = :idestado_fisico and nombre ~*:nombre";
+	$criteria->params = array(':idestado_fisico' => $id, ':nombre'=> $id3);	    	}
+	elseif($id and $id4){
+	$criteria->condition = "idestado_fisico = :idestado_fisico and idbarrio=:idbarrio";
+	$criteria->params = array(':idestado_fisico' => $id, ':idbarrio'=> $id4);		}
+	elseif($id and $precio)   	{
+  	$criteria->condition = "idestado_fisico = :idestado_fisico and ". $stprecio;
+	$criteria->params = array(':idestado_fisico' => $id, ':precio'=> $precio);    	}
+
+	elseif($id2 and $id3){
+	$criteria->condition = "idmoneda = :idmoneda and nombre ~*:nombre";
+	$criteria->params = array(':idmoneda' => $id2, ':nombre'=> $id3);		}
+	elseif($id2 and $id4){
+	$criteria->condition = "idmoneda = :idmoneda and idbarrio=:idbarrio";
+	$criteria->params = array(':idmoneda' => $id2, ':idbarrio'=> $id4);		}
+	elseif($id2 and $precio)	{
+  	$criteria->condition = "idmoneda = :idmoneda and ".$stprecio;
+	$criteria->params = array(':idmoneda' => $id2, ':precio'=> $precio);    }
+
+	elseif($id3 and $id4){
+	$criteria->condition = "nombre ~*:nombre and idbarrio=:idbarrio";
+	$criteria->params = array(':nombre'=> $id3,':idbarrio' => $id4 );		}
+	elseif($id3 and $precio)	{
+  	$criteria->condition = "nombre ~*:nombre and ".$stprecio;
+	$criteria->params = array(':nombre'=> $id3, ':precio'=> $precio);      	}
+
+
+
+	elseif($id){
+	$criteria->condition = "idestado_fisico = :idestado_fisico";
+	$criteria->params = array(':idestado_fisico' => $id);	}
+	elseif($id2){
+	$criteria->condition = "idmoneda = :idmoneda";
+	$criteria->params = array(':idmoneda' => $id2);	    }
+	elseif($id3){
+	$criteria->condition = "nombre ~*:nombre";
+	$criteria->params = array(':nombre'=> $id3);	    	}
+	elseif($id4){
+	$criteria->condition = "idbarrio = :idbarrio";
+	$criteria->params = array(':idbarrio' => $id4);	    }
+	elseif($precio){
+	$criteria->condition = $stprecio;
+	$criteria->params = array(':precio' => $precio);	    }
+
+
+
+	else{
+	$criteria->condition = "idestado_fisico = :idestado_fisico and idmoneda = :idmoneda and nombre ~*:nombre and idbarrio=:idbarrio and ". $stprecio;
+	$criteria->params = array(':idestado_fisico' => $id ?: 0, ':idmoneda' => $id2 ?: 0, ':nombre'=> $id3 ?: 0, ':idbarrio'=> $id4 ?: 0, ':precio'=> $precio ?: 0); }
+
+
+    return $criteria;
 }
- 
+}

@@ -19,6 +19,7 @@ return array(
 	    'application.modules.user.*',
         'application.modules.user.models.*',
         'application.modules.user.components.*',
+
 	),
 
 	'modules'=>array(

@@ -1,4 +1,4 @@
-$(function (){
+/*$(function (){
 	//codigo esconder al cargar la pagina el menu resolución adapta solo menor a 768px
 	//$('#bs-navbar-collapse-1').css({height:0});
 
@@ -10,5 +10,10 @@ $(function (){
 	});
 
 
+	console.log("Hola desde la pagina producto item");
+
+
+
 
 });
+*/

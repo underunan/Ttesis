@@ -39,6 +39,10 @@
 								<input type="text" class="form-control input-md input-txt" placeholder="Articulo a buscar" name="articulo" onkeyUp="javascript:this.value=this.value.toUpperCase();" onkeyDown="transpName(this.value)" style="text-transform:uppercase;">
 								<script type="text/javascript">function transpName(Thisvalue){document.getElementById("Producto_nombre").value = Thisvalue;}</script>
 								<?php echo $form->hiddenField($model,'nombre',array('size'=>30,'maxlength'=>30, 'style'=>'text-transform:uppercase;' )); ?>
+
+
+
+
 							</div>
 						</div>
 
@@ -46,12 +50,60 @@
 						<!--Filtro de busqueda-->
 						<div id="filtro" class="panel-collapse collapse">
 							<div class="form-group rango line">
-								<label for="form-group" class="col-sm-3 control-label">Rango precio</label>
-								<div class="input-group col-sm-8 col-xs-12">
-									<input type="text" id="amount-1" readonly>
-									<input type="text" id="amount-2" readonly>
-									<div id="slider-range"></div>
+
+                            <script type="text/javascript">
+                            	$(document).ready(function()
+                            		{
+                            		$('#precio1').change(function() {
+                            		$('#Producto_precio').val($(this).val());
+                            		});
+                            	});
+                  </script>
+
+                  <div class="form-group">
+							<label for="form-group" class="col-sm-4 col-xs-12 control-label">Especifica un margen de precio:</label>
+							<div class="input-group col-sm-3">
+
+
+                                <!--<div id="slider-range"></div>-->
+
+
+                                <p id="amount" class="label label-danger"></p>
+                                <input type="hidden" id="amount1">
+                                <input type="hidden" id="amount2">
+                               <br><br>
+
+
+
+
+                               <!-- SLIDE SENCILLO-->
+                            <?php
+                           $this->widget('zii.widgets.jui.CJuiSlider',array(
+                            // additional javascript options for the slider plugin
+                            'id'=>'slider-range2',
+                            'options'=>array(
+                            ),
+                            'htmlOptions'=>array(
+                                'style'=>'height:12px;',
+                            ),
+                        ));
+                    ?>
+
+                    <p id="amt" class="label label-danger"></p><p id="amount_2" class="label label-danger"></p>
+                    <input name="Producto[precio]" type="hidden" id="amount_v2">
+
+							</div>
+					</div>
+
+<!--
+                            <div class="form-group">
+								<label for="form-group" class="col-sm-2 col-xs-12 control-label">Especifica un margen de precio:</label>
+								<div class="input-group col-sm-3">
+                                <p>_____________<input id="precio1" type="range" name="precio1" min="2" max="2000" step="1" value="40" style="width: 100%;">2000 o mas</p>
 								</div>
+							</div>
+
+							-->
 							</div>
 
 							<div class="form-group">
@@ -61,6 +113,7 @@
 									<label class="btn btn-success"><input type="radio" onClick="up1()" name="gender" value="1" id="l1"> New</label>
 									<label class="btn btn-success"><input type="radio" onClick="up2()" name="gender" value="2" id="l2"> use</label>
                                     <?php echo $form->hiddenField($model,'idestado_fisico'); ?>
+
 
 								</div>
 								<label for="form-group" class="col-sm-2 col-xs-12 control-label">Moneda</label>
@@ -162,56 +215,71 @@
 <!--<script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?callback=inicializar&key=AIzaSyAzfZm59iFzSPrwsc781ByiEsKl4aeuZow" async defer>
 </script>-->
 
-<!--
-<script type="text/javascript" src="js/map_script.js"></script>
--->
-<script language='javascript'>
-function up1(){var le1 = document.getElementById("l1").value;document.getElementById("Producto_idestado_fisico").value = le1;}
-function up2(){var le1 = document.getElementById("l2").value;document.getElementById("Producto_idestado_fisico").value = le1;}
-function up3(){var le1 = document.getElementById("l3").value;document.getElementById("Producto_idmoneda").value = le1;}
-function up4(){var le1 = document.getElementById("l4").value;document.getElementById("Producto_idmoneda").value = le1;}
-</script>
-
 
 <?php
   	#sacamos los datos del modelo del controlador SiteController
 	$data = array();
    for ($i = 0; $i < count($model2);$i++) {
-	  $data[] = array('lat'=>$model2[$i]->latlonne,'long'=>$model2[$i]->latlonso);
+	  $data[] = array('lat'=>$model2[$i]->latlonne,'long'=>$model2[$i]->latlonso,);
 	}
 	//codificamos a json
 	$json_string = json_encode($data);
 ?>
 
-
-
-
-
 <script type="text/javascript">
 
-function load() {
-var map = new google.maps.Map(document.getElementById("map-canvas"), {
-    center: new google.maps.LatLng(12.419682877577497,-86.87478992462161),
-      zoom: 14,
-       mapTypeId: 'roadmap'
-    });
-   //pasamos el obj json a string
-	var data = '"<?php echo $json_string; ?>"';
+$(function(){
 
-	//deshacemos las comillas dobles que nos aparecen al convertirlo en json con php
-	data = JSON.parse(data.substring(1,data.length-1));
-	console.log(data);
-	for(punto in data){
-		//puntos a mostrar en el mapa
-		var point = new google.maps.LatLng(
-              parseFloat(data[punto].lat),
-              parseFloat(data[punto].long)
-           	);
-    	var marker = new google.maps.Marker({
-          map: map,
-          position: point
-        });
-	}
- }
-  google.maps.event.addDomListener(window, 'load', load);
+var data = JSON.parse('<?php echo $json_string; ?>');
+var opciones = {
+    center: new google.maps.LatLng(12.419682877577497,-86.87478992462161),
+    zoom: 14,
+    mapTypeId: 'roadmap'
+};
+
+var map = new google.maps.Map(document.getElementById("map-canvas"), opciones);
+
+$.each(data, function( index, value ) {
+
+  var point = new google.maps.LatLng(value.lat, value.long);
+  var marker = new google.maps.Marker({
+      map: map,
+      position: point
+  });
+  var infoVentana;
+
+});
+});
+
  </script>
+
+ <script type="text/javascript">
+//SLIDER
+$(function(){
+//IMPRIME DESDE EL CONTROLADOR, PARA PROBAR
+console.log("Imprime desde el controlador: "+ '<?php echo $model3;?>');
+
+
+
+
+//CONFIGURACION SLIDE SENCILLO
+$( "#slider-range2" ).slider({
+        min: 0,
+        max: 2000,
+        value: 100,
+         slide: function( event, ui ) {
+                 $( "#amount_v2" ).val( ui.value);
+                 $( "#amount_2" ).html(ui.value);
+                 }
+             });
+ $( "#amount_2" ).html( $( "#slider-range2" ).slider( "values",0));
+ $( "#amount_v2" ).html($( "#slider-range2" ).slider( "values",0));
+ $( "#amount_v2" ).val($( "#slider-range2" ).slider( "values",0));
+
+});
+
+function up1(){var le1 = document.getElementById("l1").value;document.getElementById("Producto_idestado_fisico").value = le1;}
+function up2(){var le1 = document.getElementById("l2").value;document.getElementById("Producto_idestado_fisico").value = le1;}
+function up3(){var le1 = document.getElementById("l3").value;document.getElementById("Producto_idmoneda").value = le1;document.getElementById("amt").innerHTML = 'C$';}
+function up4(){var le1 = document.getElementById("l4").value;document.getElementById("Producto_idmoneda").value = le1;document.getElementById("amt").innerHTML = 'U$';}
+</script>

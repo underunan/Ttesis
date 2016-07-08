@@ -10,62 +10,7 @@ body {
   color: #565a5c;
   font-family: Arial;
   font-size: 16px;
-/*
-	.cabecera
-		background color_header
-		box-shadow 0 2px 5px rgba(0,0,0,0.26)
-		-webkit-box-shadow 0 2px 5px rgba(0,0,0,0.50)
-		font-size 1em
-		margin 0 0 0 0
-		position relative
-		z-index 1000
-		width 100%
-		&:after
-			border-bottom 30px solid transparent
-			border-top 30px solid transparent
-			border-right 35px solid #fff
-			content ""
-			position absolute
-			top 0.3em
-			right 0
-		div
-			figure
-				padding 0
-				width 70px
-				img
-					margin 0 2.5em
-					width 100%
-		.menu
-			display flex
-			display -webkit-flex
-			display -ms-webkit-flexbox
-			flex-wrap nowrap
-			-webkit-flex-wrap nowrap
-			-ms-flexbox-wrap nowrap
-			margin 0
-			padding 0
-			position absolute
-			right 3em
-			top 1.5em
-			li
-				list-style none
-				margin 0
-				a:not(.btn)
-					color #fff
-					font-size 0.9em
-					font-weight bold
-					margin 0 0.5em
-					padding 0 0.2em
-					text-decoration none
-				a:not(.btn):hover
-						border-bottom 0.3em solid #f75d52
-					.btn
-						box-shadow 0 5px 0 rgba(#000,0.5)
-					.btn:hover
-						background #f75d52
-						border 1px solid #f75d52
-						box-shadow 0 5px 0 rgba(#000,0.5)
-	*/
+
 }
 body .cabecera {
   margin: 0 0 0 0;
@@ -83,102 +28,7 @@ body .cabecera .cabecera-nav .topHead ul li a {
   background-color: transparent;
   color: #fff;
 }
-/*
-body .cabecera .cabecera-nav {
-  border-radius: 0px;
-}
-body .cabecera .cabecera-nav .topHead {
-  background-color: #fff;
-  height: 55px;
-}
-body .cabecera .cabecera-nav .topHead div a {
-  padding: 0;
-}
-body .cabecera .cabecera-nav .topHead div a img {
-  height: 60px;
-  width: 60px;
-}
-body .cabecera .cabecera-nav .topHead ul li:hover {
-  background-color: #90caf9;
-  height: 55px;
-}
-body .cabecera .cabecera-nav .topHead ul li:hover a {
-  color: #fff;
-}
-body .cabecera .cabecera-nav .topHead ul li {
-  height: 55px;
-  border-left: 2px solid color_cuerpo;
-}
-body .cabecera .cabecera-nav .topHead ul li a {
-  background-color: transparent;
-  color: #565a5c;
-  font-size: 0.8em;
-  margin-top: 0.5em;
-}
-body .cabecera .cabecera-nav .topHead ul li .unete {
-  background-color: #90caf9;
-  border-radius: 0;
-  height: 290px;
-  padding: 2em;
-  width: 270px;
-}
-body .cabecera .cabecera-nav .topHead ul li .unete h3 {
-  color: #fff;
-  font-weight: bold;
-  text-align: left;
-}
-body .cabecera .cabecera-nav .topHead ul li .unete ._usuario,
-body .cabecera .cabecera-nav .topHead ul li .unete ._pass {
-  background-color: #fff;
-  border-radius: 0;
-  font-size: 1em;
-  padding: 20px;
-  text-align: center;
-}
-body .cabecera .cabecera-nav .topHead ul li .unete .btn-acceder {
-  border-radius: 0;
-}
-body .cabecera .cabecera-nav .topHead ul .moneda ul {
-  border-radius: 0;
-  padding: 0;
-  margin: 0;
-  width: 160px;
-}
-body .cabecera .cabecera-nav .topHead ul .moneda ul li {
-  border: 0;
-  border-radius: 0;
-}
-body .cabecera .cabecera-nav .topHead ul .moneda ul li:last-child {
-  border-top: 1px solid color_cuerpo;
-}
-body .cabecera .cabecera-nav .topHead ul .moneda ul a {
-  font-size: 1em;
-  margin: 0;
-  padding: 1em;
-  text-align: left;
-}
-body .cabecera .cabecera-nav .topHead ul .moneda li:hover {
-  background-color: #2196f3;
-}
-body .cabecera .cabecera-nav .topHead ul .moneda:hover ul {
-  background-color: #90caf9;
-  display: block;
-  margin: 0;
-}
-body .cabecera .cabecera-nav .topHead ul .login:hover .unete {
-  display: block;
-  margin: 0;
-}
-body .cabecera .cabecera-nav .topHead ul .login:hover .unete button {
-  color: #fff;
-  background-color: #64b5f6;
-  font-size: 1em;
-  font-weight: normal;
-}
-body .cabecera .cabecera-nav .topHead ul .login:hover .unete button:hover {
-  background-color: #42a5f5;
-}
-*/
+
 body section {
   margin: 0;
 }
@@ -201,6 +51,18 @@ body section .aside-bar {
   top: 50px;
   width: 60%;
 }
+
+/* CSS SLIDER*/
+/*Para definir el color de fondo del rango seleccionado*/
+.ui-slider{
+    background-color: #d9534f !important;
+}
+/*Para definir el estilo del botón de desplazamiento*/
+.ui-slider .ui-slider-handle{
+    border: 1px solid red;
+}
+
+
 body section .aside-bar .search {
   border-radius: 0;
 }

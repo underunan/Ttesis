@@ -68,12 +68,11 @@
 <div></div>
     <?php include 'pie-pagina/footer.php';?>
 
-
+<!-- <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script -->
 <script type="text/javascript" src="js/modernizr.js"></script>
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
 <!--script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw86BjBuILI2xv5MAsgPfOOBQUc0ZByXY&callback=inicializar" async defer></script-->
 <!-- <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script> -->
-
 <script type="text/javascript" src="js/jquery.vide.js"></script>
 <script type="text/javascript" src="js/bntBuscar.js"></script>
 <script type="text/javascript" src="js/map_script.js"></script>

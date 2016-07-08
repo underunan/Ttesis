@@ -184,7 +184,8 @@ class ProductoController extends Controller
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
+
+	/*public function actionIndex()
 	{
 	    $dataProvider = Producto::model()->findAll(array('order'=>'idproducto DESC'));
         $dataProvider = new CActiveDataProvider('Producto');
@@ -197,7 +198,31 @@ class ProductoController extends Controller
         	$this->render('index',array(
 			'model'=>$model,'dataProvider'=>$dataProvider,
 		));
-	}
+	}*/
+
+	public function actionIndex()	{
+      $dataProvider = new CActiveDataProvider('Producto');
+      $model=new Producto();
+		if(isset($_GET['Producto'])){
+           // $model->attributes = $_GET['Producto'];
+        $this->loadProducto($model,
+            $_GET['Producto']['nombre'],
+            $_GET['Producto']['idbarrio']);		}
+        else{
+        $this->render('index',array('dataProvider'=>$dataProvider,'model'=>$model,));
+        }
+
+    }
+
+    function loadProducto($model, $nombre, $barrio)
+    {
+    header('Location: index.php?r=producto2%2Findex&Producto%5Bidbarrio%5D='.$barrio.'&articulo=&Producto%5Bnombre%5D='.$nombre.'&Producto%5Bprecio%5D=%24100&Producto%5Bidestado_fisico%5D=&Producto%5Bidmoneda%5D=');
+    exit;
+//index.php?r=producto2%2Findex&Producto%5Bidbarrio%5D='.$barrio.'&articulo=&Producto%5Bnombre%5D='.$nombre.'&Producto%5Bprecio%5D=%24100&Producto%5Bidestado_fisico%5D=&Producto%5Bidmoneda%5D=
+
+    }
+
+
 
 	/**
 	 * Manages all models.

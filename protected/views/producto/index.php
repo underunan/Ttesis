@@ -24,10 +24,10 @@
             	</div>
 
 
-            		<?php /*echo CHtml::submitButton('Buscar', array('class'=>'bnt btn-danger btn-lg', 'id'=>'bntBusca'));*/ ?>
-    		<div class="input-group">
+            		<?php echo CHtml::submitButton('Buscar', array('class'=>'bnt btn-danger btn-lg', 'id'=>'bntBusca')); ?>
+    		<!--div class="input-group">
 				<a class="bnt btn-danger btn-lg" id="bntBuscar" href="javascript:openPage()">Buscar</a>
-			</div>
+			</div-->
 
 
  <?php $this->endWidget(); ?>
@@ -81,19 +81,7 @@
 
 <section class="resultados container">
 	<h1>EXPLORA LAS TIENDAS</h1>
-	 <?php
-                /* @var $this ImagenController */
-                /* @var $dataProvider CActiveDataProvider */
 
-               /* $this->breadcrumbs=array(
-                	'Peroducto',
-                );
-*/
-                /*$this->menu=array(
-                	array('label'=>'Create Imagen', 'url'=>array('create')),
-                	array('label'=>'Manage Imagen', 'url'=>array('admin')),
-                );*/
-                ?>
 	<div class="cards">
         <?php
 
@@ -107,10 +95,3 @@
         ?>
 	</div>
 </section>
-
-<script language="javascript">
-openPage = function(){
-var scrt_var1 = document.getElementById("PALABRA_BUSQUEDA").value;
-var scrt_var2 = document.getElementById("LUGAR_BUSQUEDA").value;
-location.href = "index.php?r=producto2%2Findex&Producto%5Bidbarrio%5D="+scrt_var2+"&articulo=&Producto%5Bnombre%5D="+scrt_var1+"&Producto%5Bidestado_fisico%5D=&Producto%5Bidmoneda%5D=";}
-</script>

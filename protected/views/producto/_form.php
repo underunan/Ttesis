@@ -91,7 +91,7 @@
 	<div class="form-group">
         <?php //echo $form->labelEx($model,'fecha_publicacion'); ?>
 		<?php //echo $form->textField($model,'fecha_publicacion',array('class'=>'form-control')); ?>
-		<?php echo $form->hiddenField($model,'fecha_publicacion', array('value'=>date('Y/m/d')),array('readonly'=>'readonly')); ?>
+ 
 		<?php //echo $form->dateField($model,'fecha_publicacion',array('class'=>'form-control')); ?>
 		<?php echo $form->error($model,'fecha_publicacion',array('class'=>'alert alert-danger')); ?>
 	</div>
